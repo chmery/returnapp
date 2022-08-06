@@ -1,0 +1,19 @@
+.button {
+    background: linear-gradient(92.88deg, #75549e 8.76%, #c471c6 93.09%);
+    color: white;
+    display: flex;
+    align-items: center;
+    column-gap: 0.4em;
+    margin: 1em auto;
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 0.8em 1.6em;
+    border-radius: 10em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.button:hover {
+    transform: scale(1.08);
+}
