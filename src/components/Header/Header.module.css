@@ -1,0 +1,16 @@
+.header {
+    background: var(--dark-purple);
+    text-align: center;
+    padding: 1.5em 0;
+}
+
+.header span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 480px) {
+    .header span {
+        font-size: 1.375rem;
+    }
+}
