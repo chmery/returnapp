@@ -2,6 +2,7 @@ import classes from "./PeopleList.module.css";
 import PlusIcon from "../PlusIcon";
 import AddPeople from "./AddPeople";
 import PeopleItem from "./PeopleItem";
+import DarkCard from "../../UI/Cards/DarkCard";
 
 const People = () => {
     const TEST_DATA = [
@@ -16,13 +17,13 @@ const People = () => {
     return (
         <>
             <p className={classes.people}>People</p>
-            <div className={classes["people-container"]}>
+            <DarkCard>
                 <div className={classes.icon}>
                     <PlusIcon />
                 </div>
                 {peopleList}
                 <AddPeople />
-            </div>
+            </DarkCard>
         </>
     );
 };

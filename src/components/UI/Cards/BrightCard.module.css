@@ -1,0 +1,5 @@
+.bright-card {
+    background: var(--item-bg);
+    padding: 1em;
+    border-radius: 1em;
+}

@@ -1,0 +1,9 @@
+.dark-card {
+    background: var(--dark-purple);
+    width: 100%;
+    padding: 1em;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
