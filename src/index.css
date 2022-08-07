@@ -4,10 +4,17 @@
 * {
     font-family: "Montserrat", sans-serif;
     color: #fff;
+    box-sizing: border-box;
 }
 
 body {
-    box-sizing: border-box;
     margin: 0;
     background: var(--bg);
+}
+
+main {
+    max-width: 27rem;
+    min-width: 23.125rem;
+    margin: 0 auto;
+    padding: 1em;
 }

@@ -1,0 +1,61 @@
+.creator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+}
+
+.creator label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.5em;
+    width: 100%;
+}
+
+.creator input {
+    width: 100%;
+    height: 3em;
+    border: none;
+    background: var(--dark-purple);
+    border-radius: 0.8em;
+    font-size: 1.125rem;
+    padding: 1em;
+    text-align: center;
+}
+
+.people {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.people-container {
+    background: var(--dark-purple);
+    width: 100%;
+    padding: 1em;
+    border-radius: 0.8em;
+}
+
+.icon {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 3em;
+    border-radius: 100vh;
+    background-color: var(--item-bg);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+.action {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1em;
+}
