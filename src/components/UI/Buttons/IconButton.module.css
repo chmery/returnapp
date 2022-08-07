@@ -1,0 +1,16 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    background: var(--bright-purple);
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: transform 0.1s;
+    border: none;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}

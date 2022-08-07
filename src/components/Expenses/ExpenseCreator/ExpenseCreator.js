@@ -1,6 +1,6 @@
 import classes from "./ExpenseCreator.module.css";
 
-import Button from "../../UI/Button";
+import Button from "../../UI/Buttons/Button";
 import Input from "../../UI/Input";
 import PeopleList from "../PeopleList/PeopleList";
 

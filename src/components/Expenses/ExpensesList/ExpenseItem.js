@@ -1,6 +1,8 @@
 import classes from "./ExpensesItem.module.css";
 
 import BrightCard from "../../UI/Cards/BrightCard";
+import ManageButton from "../../UI/Buttons/ManageButton";
+import RemoveButton from "../../UI/Buttons/RemoveButton";
 
 const ExpenseItem = (props) => {
     const { expenseData } = props;
@@ -23,7 +25,10 @@ const ExpenseItem = (props) => {
                     <span>{amountReturned}</span>
                 </p>
             </div>
-            <div>icons</div>
+            <div className={classes.action}>
+                <ManageButton />
+                <RemoveButton />
+            </div>
         </BrightCard>
     );
 };

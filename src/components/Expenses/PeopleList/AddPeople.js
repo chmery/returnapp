@@ -1,6 +1,6 @@
 import classes from "./AddPeople.module.css";
 import Input from "../../UI/Input";
-import ButtonSecondary from "../../UI/ButtonSecondary";
+import ButtonSecondary from "../../UI/Buttons/ButtonSecondary";
 
 const AddPeople = () => {
     return (

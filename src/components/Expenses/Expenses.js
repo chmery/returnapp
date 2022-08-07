@@ -1,4 +1,4 @@
-import Button from "../UI/Button";
+import Button from "../UI/Buttons/Button";
 import ExpenseCreator from "./ExpenseCreator/ExpenseCreator";
 
 import classes from "./Expenses.module.css";

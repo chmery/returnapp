@@ -1,4 +1,4 @@
-const ExitIcon = () => {
+const ManageIcon = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -10,12 +10,13 @@ const ExitIcon = () => {
             stroke-width="2.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="feather feather-x"
+            class="feather feather-more-horizontal"
         >
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <circle cx="12" cy="12" r="1"></circle>
+            <circle cx="19" cy="12" r="1"></circle>
+            <circle cx="5" cy="12" r="1"></circle>
         </svg>
     );
 };
 
-export default ExitIcon;
+export default ManageIcon;

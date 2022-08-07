@@ -1,7 +1,7 @@
 import classes from "./PeopleItem.module.css";
 
-import ExitIcon from "../ExitIcon";
 import BrightCard from "../../UI/Cards/BrightCard";
+import RemoveButton from "../../UI/Buttons/RemoveButton";
 
 const PeopleItem = (props) => {
     const { personData } = props;
@@ -15,9 +15,7 @@ const PeopleItem = (props) => {
                     Owes you:<span>{amount}</span>
                 </p>
             </div>
-            <div className={classes.icon}>
-                <ExitIcon />
-            </div>
+            <RemoveButton />
         </BrightCard>
     );
 };
