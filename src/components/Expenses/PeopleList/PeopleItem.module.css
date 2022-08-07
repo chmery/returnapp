@@ -1,0 +1,41 @@
+.people-item {
+    padding: 1em;
+    background: var(--item-bg);
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.7em 0;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.4em;
+}
+
+.text {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.text span {
+    font-weight: 600;
+    color: var(--highlight);
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    background: var(--bright-purple);
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}

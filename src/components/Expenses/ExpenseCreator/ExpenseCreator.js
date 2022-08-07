@@ -2,7 +2,7 @@ import classes from "./ExpenseCreator.module.css";
 
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
-import PeopleList from "./PeopleList";
+import PeopleList from "../PeopleList/PeopleList";
 
 const ExpenseCreator = () => {
     return (
