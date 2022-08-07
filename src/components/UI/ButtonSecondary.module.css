@@ -1,0 +1,14 @@
+.button {
+    background: var(--bright-purple);
+    cursor: pointer;
+    transition: transform 0.1s;
+    font-size: 1rem;
+    border: none;
+    padding: 0.8em 2em;
+    border-radius: 1em;
+    width: 100%;
+}
+
+.button:hover {
+    transform: scale(1.08);
+}

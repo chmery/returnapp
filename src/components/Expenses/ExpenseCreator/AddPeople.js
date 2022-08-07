@@ -1,5 +1,6 @@
 import classes from "./AddPeople.module.css";
 import Input from "../../UI/Input";
+import ButtonSecondary from "../../UI/ButtonSecondary";
 
 const AddPeople = () => {
     return (
@@ -12,8 +13,8 @@ const AddPeople = () => {
                 />
             </div>
             <div className={classes.action}>
-                <button>Cancel</button>
-                <button>Confirm</button>
+                <ButtonSecondary>Cancel</ButtonSecondary>
+                <ButtonSecondary>Confirm</ButtonSecondary>
             </div>
         </div>
     );
