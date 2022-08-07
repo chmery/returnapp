@@ -1,5 +1,6 @@
 import classes from "./PeopleList.module.css";
 import PlusIcon from "../PlusIcon";
+import AddPeople from "./AddPeople";
 
 const People = () => {
     return (
@@ -9,6 +10,7 @@ const People = () => {
                 <div className={classes.icon}>
                     <PlusIcon />
                 </div>
+                <AddPeople />
             </div>
         </>
     );
