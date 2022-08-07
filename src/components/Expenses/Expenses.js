@@ -1,5 +1,5 @@
 import Button from "../UI/Button";
-import ExpenseCreator from "./ExpenseCreator";
+import ExpenseCreator from "./ExpenseCreator/ExpenseCreator";
 
 import classes from "./Expenses.module.css";
 import PlusIcon from "./PlusIcon";

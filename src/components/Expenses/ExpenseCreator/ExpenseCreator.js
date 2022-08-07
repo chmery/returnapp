@@ -1,7 +1,8 @@
 import classes from "./ExpenseCreator.module.css";
-import PlusIcon from "./PlusIcon";
-import Button from "../UI/Button";
-import Input from "../UI/Input";
+
+import Button from "../../UI/Button";
+import Input from "../../UI/Input";
+import PeopleList from "./PeopleList";
 
 const ExpenseCreator = () => {
     return (
@@ -9,12 +10,7 @@ const ExpenseCreator = () => {
             <h1>Expense Creator</h1>
             <Input label={"Title"} input={{ id: "title", type: "text" }} />
             <Input label={"Total Amount"} input={{ id: "amount", type: "number" }} />
-            <p className={classes.people}>People</p>
-            <div className={classes["people-container"]}>
-                <div className={classes.icon}>
-                    <PlusIcon />
-                </div>
-            </div>
+            <PeopleList />
             <div className={classes.action}>
                 <Button>Cancel</Button>
                 <Button>Create Expense</Button>
