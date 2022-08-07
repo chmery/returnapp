@@ -1,0 +1,20 @@
+.title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4em;
+}
+
+.amount {
+    font-size: 1rem;
+}
+
+.amount > span,
+.returned > span {
+    color: var(--highlight);
+    font-weight: 600;
+}
+
+.returned {
+    font-size: 1rem;
+    font-weight: 400;
+}

@@ -2,6 +2,7 @@ import Button from "../UI/Button";
 import ExpenseCreator from "./ExpenseCreator/ExpenseCreator";
 
 import classes from "./Expenses.module.css";
+import ExpensesList from "./ExpensesList/ExpensesList";
 import PlusIcon from "./PlusIcon";
 
 const Expenses = () => {
@@ -13,6 +14,7 @@ const Expenses = () => {
                 <Button>
                     Add new expense <PlusIcon />
                 </Button>
+                <ExpensesList />
             </div>
             <ExpenseCreator />
         </>

@@ -9,16 +9,14 @@ const PeopleItem = (props) => {
 
     return (
         <BrightCard>
-            <div className={classes["people-item"]}>
-                <div>
-                    <p className={classes.name}>{personData.name}</p>
-                    <p className={classes.text}>
-                        Owes you:<span>{amount}</span>
-                    </p>
-                </div>
-                <div className={classes.icon}>
-                    <ExitIcon />
-                </div>
+            <div>
+                <p className={classes.name}>{personData.name}</p>
+                <p className={classes.text}>
+                    Owes you:<span>{amount}</span>
+                </p>
+            </div>
+            <div className={classes.icon}>
+                <ExitIcon />
             </div>
         </BrightCard>
     );
