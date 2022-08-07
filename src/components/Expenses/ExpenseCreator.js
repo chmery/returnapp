@@ -1,19 +1,14 @@
 import classes from "./ExpenseCreator.module.css";
 import PlusIcon from "./PlusIcon";
 import Button from "../UI/Button";
+import Input from "../UI/Input";
 
 const ExpenseCreator = () => {
     return (
         <div className={classes.creator}>
             <h1>Expense Creator</h1>
-            <label>
-                Title
-                <input type="text" />
-            </label>
-            <label>
-                Total Amount
-                <input type="number" />
-            </label>
+            <Input label={"Title"} input={{ id: "title", type: "text" }} />
+            <Input label={"Total Amount"} input={{ id: "amount", type: "number" }} />
             <p className={classes.people}>People</p>
             <div className={classes["people-container"]}>
                 <div className={classes.icon}>

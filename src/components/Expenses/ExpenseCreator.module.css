@@ -5,25 +5,6 @@
     row-gap: 1em;
 }
 
-.creator label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 0.5em;
-    width: 100%;
-}
-
-.creator input {
-    width: 100%;
-    height: 3em;
-    border: none;
-    background: var(--dark-purple);
-    border-radius: 0.8em;
-    font-size: 1.125rem;
-    padding: 1em;
-    text-align: center;
-}
-
 .people {
     font-size: 1.125rem;
     font-weight: 500;
