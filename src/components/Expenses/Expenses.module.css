@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    animation: fade-in 0.3s forwards;
 }
 
 .start-text {
@@ -17,5 +18,14 @@
 
     .start-text {
         font-size: 1.125rem;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

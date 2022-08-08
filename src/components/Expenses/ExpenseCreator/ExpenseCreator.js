@@ -4,7 +4,7 @@ import Button from "../../UI/Buttons/Button";
 import Input from "../../UI/Input";
 import PeopleList from "../PeopleList/PeopleList";
 
-const ExpenseCreator = () => {
+const ExpenseCreator = (props) => {
     return (
         <div className={classes.creator}>
             <h1>Expense Creator</h1>
@@ -12,7 +12,7 @@ const ExpenseCreator = () => {
             <Input label={"Total Amount"} input={{ id: "amount", type: "number" }} />
             <PeopleList />
             <div className={classes.action}>
-                <Button>Cancel</Button>
+                <Button onClick={props.onCancel}>Cancel</Button>
                 <Button>Create Expense</Button>
             </div>
         </div>
