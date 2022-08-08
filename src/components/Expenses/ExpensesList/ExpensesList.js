@@ -1,16 +1,10 @@
 import DarkCard from "../../UI/Cards/DarkCard";
 import ExpenseItem from "./ExpenseItem";
 
-const ExpensesList = () => {
-    const TEST_DATA = [
-        {
-            name: "Dinner",
-            amount: "50",
-            amountReturned: "20",
-        },
-    ];
-
-    const expensesList = TEST_DATA.map((expense) => <ExpenseItem expenseData={expense} />);
+const ExpensesList = (props) => {
+    const expensesList = props.expensesData.map((expenseData) => (
+        <ExpenseItem expenseData={expenseData} />
+    ));
 
     return <DarkCard>{expensesList}</DarkCard>;
 };

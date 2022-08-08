@@ -7,7 +7,7 @@ import RemoveButton from "../../UI/Buttons/RemoveButton";
 const ExpenseItem = (props) => {
     const { expenseData } = props;
 
-    const name = `${expenseData.name} `;
+    const title = `${expenseData.title} `;
     const amount = `$${expenseData.amount}`;
     const amountReturned = ` $${expenseData.amountReturned}`;
 
@@ -15,7 +15,7 @@ const ExpenseItem = (props) => {
         <BrightCard>
             <div>
                 <p className={classes.title}>
-                    {name}
+                    {title}
                     <span className={classes.amount}>
                         ( <span>{amount}</span> )
                     </span>

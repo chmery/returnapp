@@ -9,7 +9,7 @@ const ExpenseCreator = (props) => {
     const [peopleData, setPeopleData] = useState([]);
 
     const titleInput = useRef();
-    const totalAmountInput = useRef();
+    const amountInput = useRef();
 
     const addPersonHandler = (personData) => {
         const name = personData.name;
@@ -29,7 +29,8 @@ const ExpenseCreator = (props) => {
     const createExpenseHandler = () => {
         const expense = {
             title: titleInput.current.value,
-            totalAmount: totalAmountInput.current.value,
+            amount: amountInput.current.value,
+            amountReturned: 0,
             people: peopleData,
         };
 
@@ -41,7 +42,7 @@ const ExpenseCreator = (props) => {
             <h1>Expense Creator</h1>
             <Input ref={titleInput} label={"Title"} input={{ id: "title", type: "text" }} />
             <Input
-                ref={totalAmountInput}
+                ref={amountInput}
                 label={"Total Amount"}
                 input={{ id: "amount", type: "number" }}
             />
