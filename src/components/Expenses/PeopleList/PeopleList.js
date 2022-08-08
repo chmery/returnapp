@@ -5,26 +5,19 @@ import DarkCard from "../../UI/Cards/DarkCard";
 import PlusButton from "../../UI/Buttons/PlusButton";
 import { useState } from "react";
 
-const People = () => {
+const PeopleList = (props) => {
+    const { peopleData } = props;
     const [isAddPeopleShown, setIsAddPeopleShown] = useState(false);
-    const [peopleData, setPeopleData] = useState([]);
 
     const showAddPeopleHandler = () => setIsAddPeopleShown(true);
     const hideAddPeopleHandler = () => setIsAddPeopleShown(false);
 
     const addPersonHandler = (personData) => {
-        const name = personData.name;
-        const amount = personData.amount;
-        const id = `${name.slice(0, 1)}${peopleData.length}`;
-
-        setPeopleData((prevPeopleData) => {
-            return [...prevPeopleData, { id, name, amount }];
-        });
+        props.onAddPerson(personData);
     };
 
     const removePersonHandler = (id) => {
-        const updatedPeopleData = [...peopleData].filter((personData) => personData.id !== id);
-        setPeopleData(updatedPeopleData);
+        props.onRemovePerson(id);
     };
 
     const peopleList = peopleData.map((personData) => (
@@ -47,4 +40,4 @@ const People = () => {
     );
 };
 
-export default People;
+export default PeopleList;

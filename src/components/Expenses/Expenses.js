@@ -19,15 +19,29 @@ const StarterContent = (props) => {
 };
 
 const Expenses = () => {
+    const [expensesData, setExpensesData] = useState([]);
     const [isCreatorShown, setIsCreatorShown] = useState(false);
 
     const openCreatorHandler = () => setIsCreatorShown(true);
     const closeCreatorHandler = () => setIsCreatorShown(false);
 
+    const onCreateExpenseHandler = (expenseData) => {
+        setExpensesData((prevExpensesData) => {
+            return [...prevExpensesData, { expenseData }];
+        });
+
+        setIsCreatorShown(false);
+    };
+
     return (
         <>
             {!isCreatorShown && <StarterContent onOpenCreator={openCreatorHandler} />}
-            {isCreatorShown && <ExpenseCreator onCancel={closeCreatorHandler} />}
+            {isCreatorShown && (
+                <ExpenseCreator
+                    onCancel={closeCreatorHandler}
+                    onCreateExpense={onCreateExpenseHandler}
+                />
+            )}
         </>
     );
 };
