@@ -1,7 +1,7 @@
 import classes from "./AddPeople.module.css";
-import Input from "../../UI/Input";
 import ButtonSecondary from "../../UI/Buttons/ButtonSecondary";
 import { useRef, useState } from "react";
+import AddPeopleInputs from "./AddPeopleInputs";
 
 const AddPeople = (props) => {
     const [name, setName] = useState("");
@@ -28,24 +28,14 @@ const AddPeople = (props) => {
 
     return (
         <div className={classes["add-people"]}>
-            <div className={classes.inputs}>
-                <Input
-                    ref={nameInput}
-                    input={{ id: "name", type: "text", placeholder: "Name", value: name }}
-                    onChange={nameChangeHandler}
-                />
-                <Input
-                    ref={amountInput}
-                    narrow={true}
-                    input={{
-                        id: "return-amount",
-                        type: "number",
-                        placeholder: "Amount",
-                        value: amount,
-                    }}
-                    onChange={amountChangeHandler}
-                />
-            </div>
+            <AddPeopleInputs
+                nameValue={name}
+                nameRef={nameInput}
+                onNameChange={nameChangeHandler}
+                amountValue={amount}
+                amountRef={amountInput}
+                onAmountChange={amountChangeHandler}
+            />
             <div className={classes.action}>
                 <ButtonSecondary onClick={props.onCancel}>Cancel</ButtonSecondary>
                 <ButtonSecondary onClick={confirmHandler}>Confirm</ButtonSecondary>

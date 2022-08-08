@@ -4,12 +4,6 @@
     border-radius: 1em;
 }
 
-.inputs {
-    display: flex;
-    column-gap: 1em;
-    margin-bottom: 1em;
-}
-
 .action {
     display: flex;
     justify-content: space-between;
