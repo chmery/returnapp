@@ -1,9 +1,9 @@
 import classes from "./IconButton.module.css";
 import RemoveIcon from "./RemoveIcon";
 
-const RemoveButton = () => {
+const RemoveButton = (props) => {
     return (
-        <button className={classes.button}>
+        <button onClick={props.onClick} className={classes.button}>
             <RemoveIcon />
         </button>
     );

@@ -7,13 +7,15 @@ const AddPeople = (props) => {
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
 
-    const enteredName = useRef();
-    const enteredAmount = useRef();
+    const nameInput = useRef();
+    const amountInput = useRef();
 
     const confirmHandler = () => {
+        const enteredName = nameInput.current.value;
+        const enteredAmount = amountInput.current.value;
         const personData = {
-            name: enteredName.current.value,
-            amount: +enteredAmount.current.value,
+            name: enteredName,
+            amount: +enteredAmount,
         };
 
         props.onAddPerson(personData);
@@ -21,19 +23,19 @@ const AddPeople = (props) => {
         setAmount("");
     };
 
-    const nameChangeHandler = () => setName(enteredName.current.value);
-    const amountChangeHandler = () => setAmount(enteredAmount.current.value);
+    const nameChangeHandler = () => setName(nameInput.current.value);
+    const amountChangeHandler = () => setAmount(amountInput.current.value);
 
     return (
         <div className={classes["add-people"]}>
             <div className={classes.inputs}>
                 <Input
-                    ref={enteredName}
+                    ref={nameInput}
                     input={{ id: "name", type: "text", placeholder: "Name", value: name }}
                     onChange={nameChangeHandler}
                 />
                 <Input
-                    ref={enteredAmount}
+                    ref={amountInput}
                     narrow={true}
                     input={{
                         id: "return-amount",

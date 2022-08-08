@@ -15,7 +15,7 @@ const PeopleItem = (props) => {
                     Owes you:<span>{amount}</span>
                 </p>
             </div>
-            <RemoveButton />
+            <RemoveButton onClick={props.onRemove.bind(null, personData.id)} />
         </BrightCard>
     );
 };

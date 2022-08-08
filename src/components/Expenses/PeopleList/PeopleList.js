@@ -9,19 +9,27 @@ const People = () => {
     const [isAddPeopleShown, setIsAddPeopleShown] = useState(false);
     const [peopleData, setPeopleData] = useState([]);
 
-    const peopleList = peopleData.map((personData) => <PeopleItem personData={personData} />);
-
     const showAddPeopleHandler = () => setIsAddPeopleShown(true);
     const hideAddPeopleHandler = () => setIsAddPeopleShown(false);
 
     const addPersonHandler = (personData) => {
         const name = personData.name;
         const amount = personData.amount;
+        const id = `${name.slice(0, 1)}${peopleData.length}`;
 
         setPeopleData((prevPeopleData) => {
-            return [...prevPeopleData, { name, amount }];
+            return [...prevPeopleData, { id, name, amount }];
         });
     };
+
+    const removePersonHandler = (id) => {
+        const updatedPeopleData = [...peopleData].filter((personData) => personData.id !== id);
+        setPeopleData(updatedPeopleData);
+    };
+
+    const peopleList = peopleData.map((personData) => (
+        <PeopleItem key={personData.id} personData={personData} onRemove={removePersonHandler} />
+    ));
 
     const isListEmpty = peopleData.length < 1;
 
