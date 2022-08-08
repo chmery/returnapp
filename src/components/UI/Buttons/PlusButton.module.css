@@ -1,0 +1,17 @@
+.button {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 3em;
+    border-radius: 100vh;
+    background-color: var(--item-bg);
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: none;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}

@@ -2,20 +2,3 @@
     font-size: 1.125rem;
     font-weight: 500;
 }
-
-.icon {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 3em;
-    height: 3em;
-    border-radius: 100vh;
-    background-color: var(--item-bg);
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.icon:hover {
-    transform: scale(1.1);
-}

@@ -2,7 +2,7 @@ import classes from "./AddPeople.module.css";
 import Input from "../../UI/Input";
 import ButtonSecondary from "../../UI/Buttons/ButtonSecondary";
 
-const AddPeople = () => {
+const AddPeople = (props) => {
     return (
         <div className={classes["add-people"]}>
             <div className={classes.inputs}>
@@ -13,7 +13,7 @@ const AddPeople = () => {
                 />
             </div>
             <div className={classes.action}>
-                <ButtonSecondary>Cancel</ButtonSecondary>
+                <ButtonSecondary onClick={props.onCancel}>Cancel</ButtonSecondary>
                 <ButtonSecondary>Confirm</ButtonSecondary>
             </div>
         </div>

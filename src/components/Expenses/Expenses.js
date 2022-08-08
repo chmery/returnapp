@@ -4,9 +4,9 @@ import ExpenseCreator from "./ExpenseCreator/ExpenseCreator";
 
 import classes from "./Expenses.module.css";
 import ExpensesList from "./ExpensesList/ExpensesList";
-import PlusIcon from "./PlusIcon";
+import PlusIcon from "../UI/Buttons/PlusIcon";
 
-const DefaultMessage = (props) => {
+const StarterContent = (props) => {
     return (
         <div className={classes.expenses}>
             <h1>Your Expenses</h1>
@@ -26,7 +26,7 @@ const Expenses = () => {
 
     return (
         <>
-            {!isCreatorShown && <DefaultMessage onOpenCreator={openCreatorHandler} />}
+            {!isCreatorShown && <StarterContent onOpenCreator={openCreatorHandler} />}
             {isCreatorShown && <ExpenseCreator onCancel={closeCreatorHandler} />}
         </>
     );
