@@ -1,19 +1,22 @@
 import Button from "../UI/Buttons/Button";
 import classes from "./Expenses.module.css";
-import ExpensesList from "./ExpensesList/ExpensesList";
+import ExpensesList from "../ExpensesList/ExpensesList";
 import PlusIcon from "../UI/Buttons/PlusIcon";
+import { useContext } from "react";
+import ExpensesContext from "../../store/expenses-context";
 
 const StarterMessage = () => (
     <p className={classes["start-text"]}>Start by adding your first expense.</p>
 );
 const Expenses = (props) => {
-    const areExpensesDataEmpty = props.expensesData.length === 0 ? true : false;
+    const expensesContext = useContext(ExpensesContext);
+    const areExpensesEmpty = expensesContext.expenses.length === 0 ? true : false;
 
     return (
         <div className={classes.expenses}>
             <h1>Your Expenses</h1>
-            {areExpensesDataEmpty && <StarterMessage />}
-            {!areExpensesDataEmpty && <ExpensesList expensesData={props.expensesData} />}
+            {areExpensesEmpty && <StarterMessage />}
+            {!areExpensesEmpty && <ExpensesList />}
             <Button onClick={props.onOpenCreator}>
                 Add new expense <PlusIcon />
             </Button>

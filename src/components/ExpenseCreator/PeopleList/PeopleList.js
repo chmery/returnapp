@@ -6,31 +6,33 @@ import PlusButton from "../../UI/Buttons/PlusButton";
 import { useState } from "react";
 
 const PeopleList = (props) => {
-    const { peopleData } = props;
+    const { peopleData, onAddPerson, onRemovePerson } = props;
     const [isAddPeopleShown, setIsAddPeopleShown] = useState(false);
 
     const showAddPeopleHandler = () => setIsAddPeopleShown(true);
     const hideAddPeopleHandler = () => setIsAddPeopleShown(false);
 
-    const addPersonHandler = (personData) => {
-        props.onAddPerson(personData);
-    };
+    const addPersonHandler = (personData) => onAddPerson(personData);
+    const removePersonHandler = (id) => onRemovePerson(id);
 
-    const removePersonHandler = (id) => {
-        props.onRemovePerson(id);
-    };
+    const peopleList = peopleData.map((personData) => {
+        const isListEmpty = peopleData.length === 0;
+        if (isListEmpty) return;
 
-    const peopleList = peopleData.map((personData) => (
-        <PeopleItem key={personData.id} personData={personData} onRemove={removePersonHandler} />
-    ));
-
-    const isListEmpty = peopleData.length < 1;
+        return (
+            <PeopleItem
+                key={personData.id}
+                personData={personData}
+                onRemove={removePersonHandler}
+            />
+        );
+    });
 
     return (
         <>
             <p className={classes.people}>People</p>
             <DarkCard>
-                {!isListEmpty && peopleList}
+                {peopleList}
                 {isAddPeopleShown && (
                     <AddPeople onCancel={hideAddPeopleHandler} onAddPerson={addPersonHandler} />
                 )}

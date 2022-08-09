@@ -1,12 +1,15 @@
 import classes from "./ExpenseCreator.module.css";
 
-import Button from "../../UI/Buttons/Button";
-import Input from "../../UI/Input";
-import PeopleList from "../PeopleList/PeopleList";
-import { useRef, useState } from "react";
+import Button from "../UI/Buttons/Button";
+import Input from "../UI/Input";
+import PeopleList from "./PeopleList/PeopleList";
+import { useContext, useRef, useState } from "react";
+import ExpensesContext from "../../store/expenses-context";
 
 const ExpenseCreator = (props) => {
     const [peopleData, setPeopleData] = useState([]);
+
+    const expensesContext = useContext(ExpensesContext);
 
     const titleInput = useRef();
     const amountInput = useRef();
@@ -27,14 +30,18 @@ const ExpenseCreator = (props) => {
     };
 
     const createExpenseHandler = () => {
+        const title = titleInput.current.value;
+
         const expense = {
-            title: titleInput.current.value,
+            id: `${title}${expensesContext.expenses.length}`,
+            title: title,
             amount: amountInput.current.value,
             amountReturned: 0,
             people: peopleData,
         };
 
-        props.onCreateExpense(expense);
+        expensesContext.onCreate(expense);
+        props.onCreateExpense();
     };
 
     return (

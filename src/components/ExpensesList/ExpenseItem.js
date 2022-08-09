@@ -1,8 +1,8 @@
-import classes from "./ExpensesItem.module.css";
+import classes from "./ExpenseItem.module.css";
 
-import BrightCard from "../../UI/Cards/BrightCard";
-import ManageButton from "../../UI/Buttons/ManageButton";
-import RemoveButton from "../../UI/Buttons/RemoveButton";
+import BrightCard from "../UI/Cards/BrightCard";
+import ManageButton from "../UI/Buttons/ManageButton";
+import RemoveButton from "../UI/Buttons/RemoveButton";
 
 const ExpenseItem = (props) => {
     const { expenseData } = props;
