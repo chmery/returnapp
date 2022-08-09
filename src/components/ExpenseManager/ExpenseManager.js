@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import ExpensesContext from "../../store/expenses-context";
-import DarkCard from "../UI/Cards/DarkCard";
 import Button from "../UI/Buttons/Button";
 import LeftIcon from "../UI/Buttons/LeftIcon";
 
 import classes from "./ExpenseManager.module.css";
 import ManagedExpense from "./ManagedExpense";
-import PeopleItem from "./PeopleItem";
+import PeopleList from "./PeopleList";
 
 const ExpenseManager = (props) => {
     const expensesContext = useContext(ExpensesContext);
@@ -36,25 +35,11 @@ const ExpenseManager = (props) => {
         setManagedExpense(updatedManagedExpense);
     };
 
-    const peopleList = managedExpense.people.map((personData) => (
-        <PeopleItem
-            key={personData.id}
-            personData={personData}
-            onCheckPerson={checkPersonHandler}
-        />
-    ));
-
     return (
         <div className={classes["expense-manager"]}>
             <h1>Expense Manager</h1>
-            <DarkCard>
-                <ManagedExpense
-                    expenseData={managedExpense}
-                    onRemove={removeManagedExpenseHandler}
-                />
-            </DarkCard>
-            <p>People</p>
-            <DarkCard>{peopleList}</DarkCard>
+            <ManagedExpense expenseData={managedExpense} onRemove={removeManagedExpenseHandler} />
+            <PeopleList managedExpense={managedExpense} onCheckPerson={checkPersonHandler} />
             <Button onClick={props.onCloseManager}>
                 <LeftIcon /> Go back
             </Button>

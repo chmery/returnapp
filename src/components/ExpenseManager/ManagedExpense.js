@@ -1,4 +1,5 @@
 import BrightCard from "../UI/Cards/BrightCard";
+import DarkCard from "../UI/Cards/DarkCard";
 import RemoveButton from "../UI/Buttons/RemoveButton";
 
 import classes from "./ManagedExpense.module.css";
@@ -13,23 +14,25 @@ const ManagedExpense = (props) => {
     const onRemoveHandler = () => props.onRemove(expenseData.id);
 
     return (
-        <BrightCard>
-            <div>
-                <p className={classes.title}>
-                    {title}
-                    <span className={classes.amount}>
-                        ( <span>{amount}</span> )
-                    </span>
-                </p>
-                <p className={classes.returned}>
-                    Returned:
-                    <span>{amountReturned}</span>
-                </p>
-            </div>
-            <div className={classes.action}>
-                <RemoveButton onClick={onRemoveHandler} />
-            </div>
-        </BrightCard>
+        <DarkCard>
+            <BrightCard>
+                <div>
+                    <p className={classes.title}>
+                        {title}
+                        <span className={classes.amount}>
+                            ( <span>{amount}</span> )
+                        </span>
+                    </p>
+                    <p className={classes.returned}>
+                        Returned:
+                        <span>{amountReturned}</span>
+                    </p>
+                </div>
+                <div className={classes.action}>
+                    <RemoveButton onClick={onRemoveHandler} />
+                </div>
+            </BrightCard>
+        </DarkCard>
     );
 };
 
