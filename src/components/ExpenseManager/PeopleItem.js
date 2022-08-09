@@ -8,10 +8,9 @@ const PeopleItem = (props) => {
     const amount = `$${personData.amount}`;
 
     const isAmountReturned = personData.hasReturned;
-    console.log(isAmountReturned);
 
     const markCheckedHandler = () => {
-        props.onCheckPerson(personData.id);
+        props.onCheckPerson(personData.id, personData.amount);
     };
 
     const amountNotReturnedYet = (

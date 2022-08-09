@@ -17,11 +17,20 @@ const ExpenseManager = (props) => {
         onCloseManager();
     };
 
-    const checkPersonHandler = (id) => {
+    const checkPersonHandler = (id, returnAmount) => {
         const updatedManagedExpense = { ...managedExpense };
 
         updatedManagedExpense.people.forEach((personData) => {
-            if (personData.id === id) personData.hasReturned = !personData.hasReturned;
+            if (personData.id === id && personData.hasReturned) {
+                personData.hasReturned = false;
+                updatedManagedExpense.amountReturned -= returnAmount;
+                return;
+            }
+
+            if (personData.id === id) {
+                personData.hasReturned = true;
+                updatedManagedExpense.amountReturned += returnAmount;
+            }
         });
 
         setManagedExpense(updatedManagedExpense);
