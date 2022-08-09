@@ -24,6 +24,13 @@ const ExpensesProvider = (props) => {
     };
 
     const onCloseManagerHandler = () => {
+        const managedExpenseIndex = expensesData.findIndex(
+            (expense) => expense.id === managedExpense.id
+        );
+        const updatedExpensesData = [...expensesData];
+        updatedExpensesData[managedExpenseIndex] = managedExpense;
+
+        setExpensesData(updatedExpensesData);
         setManagedExpense(null);
     };
 
