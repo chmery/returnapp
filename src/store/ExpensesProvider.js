@@ -12,7 +12,7 @@ const ExpensesProvider = (props) => {
 
     const onRemoveExpenseHandler = (id) => {
         const updatedExpensesData = [...expensesData].filter((personData) => personData.id !== id);
-        console.log(updatedExpensesData);
+        setExpensesData(updatedExpensesData);
     };
 
     const expensesContext = {

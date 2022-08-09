@@ -11,6 +11,8 @@ const ExpenseItem = (props) => {
     const amount = `$${expenseData.amount}`;
     const amountReturned = ` $${expenseData.amountReturned}`;
 
+    const onRemoveHandler = () => props.onRemove(expenseData.id);
+
     return (
         <BrightCard>
             <div>
@@ -27,7 +29,7 @@ const ExpenseItem = (props) => {
             </div>
             <div className={classes.action}>
                 <ManageButton />
-                <RemoveButton />
+                <RemoveButton onClick={onRemoveHandler} />
             </div>
         </BrightCard>
     );

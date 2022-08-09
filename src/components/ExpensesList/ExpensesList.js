@@ -6,8 +6,14 @@ import ExpenseItem from "./ExpenseItem";
 const ExpensesList = () => {
     const expensesContext = useContext(ExpensesContext);
 
+    const onRemoveExpenseHandler = (id) => expensesContext.onRemove(id);
+
     const expensesList = expensesContext.expenses.map((expenseData) => (
-        <ExpenseItem key={expenseData.id} expenseData={expenseData} />
+        <ExpenseItem
+            key={expenseData.id}
+            expenseData={expenseData}
+            onRemove={onRemoveExpenseHandler}
+        />
     ));
 
     return <DarkCard>{expensesList}</DarkCard>;
