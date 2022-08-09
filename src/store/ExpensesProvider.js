@@ -30,6 +30,7 @@ const ExpensesProvider = (props) => {
     const expensesContext = {
         expenses: expensesData,
         managedExpense: managedExpense,
+        setManagedExpense: setManagedExpense,
         onCloseManager: onCloseManagerHandler,
         onManage: onManageExpenseHandler,
         onCreate: onCreateExpenseHandler,

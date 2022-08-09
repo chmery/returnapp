@@ -18,9 +18,10 @@ const ExpenseCreator = (props) => {
         const name = personData.name;
         const amount = personData.amount;
         const id = `${name.slice(0, 1)}${peopleData.length}`;
+        const hasReturned = false;
 
         setPeopleData((prevPeopleData) => {
-            return [...prevPeopleData, { id, name, amount }];
+            return [...prevPeopleData, { id, name, amount, hasReturned }];
         });
     };
 

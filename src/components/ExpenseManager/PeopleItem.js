@@ -7,15 +7,28 @@ const PeopleItem = (props) => {
     const { personData } = props;
     const amount = `$${personData.amount}`;
 
+    const isAmountReturned = personData.hasReturned;
+    console.log(isAmountReturned);
+
+    const markCheckedHandler = () => {
+        props.onCheckPerson(personData.id);
+    };
+
+    const amountNotReturnedYet = (
+        <p className={classes.amount}>
+            Owes you: <span>{amount}</span>
+        </p>
+    );
+
+    const amountReturned = <p className={classes.amount}>Returned his due</p>;
+
     return (
         <BrightCard>
             <div>
                 <p className={classes.name}>{personData.name}</p>
-                <p className={classes.amount}>
-                    Owes you: <span>{amount}</span>
-                </p>
+                {isAmountReturned ? amountReturned : amountNotReturnedYet}
             </div>
-            <CheckButton />
+            <CheckButton onClick={markCheckedHandler} isAmountReturned={isAmountReturned} />
         </BrightCard>
     );
 };

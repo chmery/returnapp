@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ExpensesContext from "../../store/expenses-context";
 import DarkCard from "../UI/Cards/DarkCard";
 import Button from "../UI/Buttons/Button";
@@ -10,15 +10,29 @@ import PeopleItem from "./PeopleItem";
 
 const ExpenseManager = (props) => {
     const expensesContext = useContext(ExpensesContext);
-    const { managedExpense, onRemove, onCloseManager } = expensesContext;
+    const { managedExpense, setManagedExpense, onRemove, onCloseManager } = expensesContext;
 
     const removeManagedExpenseHandler = (id) => {
         onRemove(id);
         onCloseManager();
     };
 
+    const checkPersonHandler = (id) => {
+        const updatedManagedExpense = { ...managedExpense };
+
+        updatedManagedExpense.people.forEach((personData) => {
+            if (personData.id === id) personData.hasReturned = !personData.hasReturned;
+        });
+
+        setManagedExpense(updatedManagedExpense);
+    };
+
     const peopleList = managedExpense.people.map((personData) => (
-        <PeopleItem key={personData.id} personData={personData} />
+        <PeopleItem
+            key={personData.id}
+            personData={personData}
+            onCheckPerson={checkPersonHandler}
+        />
     ));
 
     return (
