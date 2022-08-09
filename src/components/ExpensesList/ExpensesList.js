@@ -7,12 +7,14 @@ const ExpensesList = () => {
     const expensesContext = useContext(ExpensesContext);
 
     const onRemoveExpenseHandler = (id) => expensesContext.onRemove(id);
+    const onManageExpenseHandler = (id) => expensesContext.onManage(id);
 
     const expensesList = expensesContext.expenses.map((expenseData) => (
         <ExpenseItem
             key={expenseData.id}
             expenseData={expenseData}
             onRemove={onRemoveExpenseHandler}
+            onManage={onManageExpenseHandler}
         />
     ));
 

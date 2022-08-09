@@ -1,0 +1,15 @@
+.name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4em;
+}
+
+.amount > span {
+    color: var(--highlight);
+    font-weight: 600;
+}
+
+.amount {
+    font-size: 1rem;
+    font-weight: 400;
+}

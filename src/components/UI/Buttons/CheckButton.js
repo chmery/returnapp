@@ -1,12 +1,12 @@
 import classes from "./IconButton.module.css";
-import ManageIcon from "./ManageIcon";
+import CheckIcon from "./CheckIcon";
 
-const ManageButton = (props) => {
+const CheckButton = (props) => {
     return (
         <button onClick={props.onClick} className={classes.button}>
-            <ManageIcon />
+            <CheckIcon />
         </button>
     );
 };
 
-export default ManageButton;
+export default CheckButton;

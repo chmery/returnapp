@@ -1,0 +1,11 @@
+.expense-manager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.expense-manager > p {
+    margin: 1em 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+}

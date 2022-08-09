@@ -1,10 +1,9 @@
-import classes from "./ExpenseItem.module.css";
-
 import BrightCard from "../UI/Cards/BrightCard";
-import ManageButton from "../UI/Buttons/ManageButton";
 import RemoveButton from "../UI/Buttons/RemoveButton";
 
-const ExpenseItem = (props) => {
+import classes from "./ManagedExpense.module.css";
+
+const ManagedExpense = (props) => {
     const { expenseData } = props;
 
     const title = `${expenseData.title} `;
@@ -12,7 +11,6 @@ const ExpenseItem = (props) => {
     const amountReturned = ` $${expenseData.amountReturned}`;
 
     const onRemoveHandler = () => props.onRemove(expenseData.id);
-    const onManageHandler = () => props.onManage(expenseData.id);
 
     return (
         <BrightCard>
@@ -29,11 +27,10 @@ const ExpenseItem = (props) => {
                 </p>
             </div>
             <div className={classes.action}>
-                <ManageButton onClick={onManageHandler} />
                 <RemoveButton onClick={onRemoveHandler} />
             </div>
         </BrightCard>
     );
 };
 
-export default ExpenseItem;
+export default ManagedExpense;
