@@ -5,6 +5,7 @@ import Input from "../UI/Input";
 import PeopleList from "./PeopleList/PeopleList";
 import { useContext, useRef, useState } from "react";
 import ExpensesContext from "../../store/expenses-context";
+import ExpenseInfo from "./ExpenseInfo/ExpenseInfo";
 
 const ExpenseCreator = (props) => {
     const [peopleData, setPeopleData] = useState([]);
@@ -68,7 +69,7 @@ const ExpenseCreator = (props) => {
         <div className={classes.creator}>
             <h1>Expense Creator</h1>
             <Input ref={titleInput} label={"Title"} input={{ id: "title", type: "text" }} />
-            <p>Amount to return: ${expenseAmount}</p>
+            <ExpenseInfo returnAmount={expenseAmount} debtorsAmount={peopleData.length} />
             <PeopleList
                 onAddPerson={addPersonHandler}
                 onRemovePerson={removePersonHandler}

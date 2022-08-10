@@ -7,3 +7,9 @@
     flex-direction: column;
     row-gap: 1em;
 }
+
+@media screen and (max-width: 470px) {
+    .dark-card {
+        padding: 0.5em;
+    }
+}
