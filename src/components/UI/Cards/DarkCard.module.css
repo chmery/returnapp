@@ -1,5 +1,5 @@
 .dark-card {
-    background: var(--dark-purple);
+    background: var(--dark);
     width: 100%;
     padding: 1em;
     border-radius: 0.8em;
@@ -11,5 +11,6 @@
 @media screen and (max-width: 470px) {
     .dark-card {
         padding: 0.5em;
+        row-gap: 0.5em;
     }
 }

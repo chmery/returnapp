@@ -1,5 +1,5 @@
 .button {
-    background: linear-gradient(92.88deg, #75549e 8.76%, #c471c6 93.09%);
+    background: var(--purple);
     display: flex;
     align-items: center;
     column-gap: 0.4em;
@@ -15,4 +15,10 @@
 
 .button:hover {
     transform: scale(1.08);
+}
+
+@media screen and (max-width: 470px) {
+    .button {
+        font-size: 1rem;
+    }
 }

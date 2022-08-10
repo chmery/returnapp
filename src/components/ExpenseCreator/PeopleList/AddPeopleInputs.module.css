@@ -3,3 +3,10 @@
     column-gap: 1em;
     margin-bottom: 1em;
 }
+
+@media screen and (max-width: 470px) {
+    .inputs {
+        margin-bottom: 0.8em;
+        column-gap: 0.8em;
+    }
+}

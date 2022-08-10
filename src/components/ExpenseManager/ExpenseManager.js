@@ -12,8 +12,8 @@ const ExpenseManager = (props) => {
     const { managedExpense, setManagedExpense, onRemove, onCloseManager } = expensesContext;
 
     const removeManagedExpenseHandler = (id) => {
-        onRemove(id);
         onCloseManager();
+        onRemove(id);
     };
 
     const checkPersonHandler = (id, returnAmount) => {

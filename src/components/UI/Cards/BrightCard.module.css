@@ -6,3 +6,9 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media screen and (max-width: 470px) {
+    .bright-card {
+        padding: 0.8em;
+    }
+}

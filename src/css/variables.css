@@ -1,9 +1,10 @@
 :root {
-    --dark-purple: #1b1927;
-    --bright-purple: #585181;
-    --highlight: #9485ed;
+    --dark: #17171a;
+    --bright-purple: #6448d4;
+    --purple: #6917f0;
+    --highlight: #8f8df0;
     --item-bg: #1f202e;
     --placeholder-text: #4f4d5e;
     --unchecked: #3d3a4a;
-    --bg: #211f2d;
+    --bg: #1a1a1d;
 }

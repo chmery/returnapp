@@ -14,7 +14,7 @@
     width: 100%;
     height: 3em;
     border: none;
-    background: var(--dark-purple);
+    background: var(--dark);
     border-radius: 0.8em;
     font-size: 1.125rem;
     padding: 1em;
@@ -34,4 +34,14 @@
 .label input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+@media screen and (max-width: 470px) {
+    .label input {
+        height: 2.7em;
+    }
+
+    .label input::placeholder {
+        font-size: 0.875rem;
+    }
 }

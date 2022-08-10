@@ -9,3 +9,17 @@
     justify-content: space-between;
     column-gap: 1em;
 }
+
+@media screen and (max-width: 470px) {
+    .add-people {
+        padding: 0.8em;
+    }
+
+    .action {
+        column-gap: 0.8em;
+    }
+
+    .action button {
+        font-size: 0.875rem;
+    }
+}
