@@ -1,4 +1,4 @@
-import PlusIcon from "./PlusIcon";
+import { PlusIcon } from "../Icons";
 import classes from "./PlusButton.module.css";
 
 const PlusButton = (props) => {

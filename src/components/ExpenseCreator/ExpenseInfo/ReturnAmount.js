@@ -1,5 +1,5 @@
 import classes from "./ExpenseInfo.module.css";
-import BarsIcon from "../../UI/BarsIcon";
+import { BarsIcon } from "../../UI/Icons";
 
 const ReturnAmount = (props) => {
     const returnAmount = `$${props.returnAmount}`;

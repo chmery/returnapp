@@ -1,5 +1,5 @@
 import styles from "./IconButton.module.css";
-import CheckIcon from "./CheckIcon";
+import { CheckIcon } from "../Icons";
 
 const CheckButton = (props) => {
     const { isAmountReturned } = props;

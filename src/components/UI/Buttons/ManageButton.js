@@ -1,5 +1,5 @@
 import classes from "./IconButton.module.css";
-import ManageIcon from "./ManageIcon";
+import { ManageIcon } from "../Icons";
 
 const ManageButton = (props) => {
     return (

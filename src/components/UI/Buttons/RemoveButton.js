@@ -1,5 +1,5 @@
 import classes from "./IconButton.module.css";
-import RemoveIcon from "./RemoveIcon";
+import { RemoveIcon } from "../Icons";
 
 const RemoveButton = (props) => {
     return (

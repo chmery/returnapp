@@ -1,7 +1,7 @@
 import Button from "../UI/Buttons/Button";
 import classes from "./Expenses.module.css";
 import ExpensesList from "../ExpensesList/ExpensesList";
-import PlusIcon from "../UI/Buttons/PlusIcon";
+import { PlusIcon } from "../UI/Icons";
 import { useContext } from "react";
 import ExpensesContext from "../../store/expenses-context";
 

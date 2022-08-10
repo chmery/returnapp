@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ExpensesContext from "../../store/expenses-context";
 import Button from "../UI/Buttons/Button";
-import LeftIcon from "../UI/Buttons/LeftIcon";
+import { LeftIcon } from "../UI/Icons";
 
 import classes from "./ExpenseManager.module.css";
 import ManagedExpense from "./ManagedExpense";
