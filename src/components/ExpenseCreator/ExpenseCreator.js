@@ -15,30 +15,14 @@ const ExpenseCreator = (props) => {
     const titleInput = useRef();
 
     const addPersonHandler = (personData) => {
-        const name = personData.name;
-        const amount = personData.amount;
-
-        if (name.length === 0 || amount === 0) {
-            console.log("Name and amount cant be empty");
-            return;
-        }
-
-        const id = `${name.slice(0, 1)}${peopleData.length}`;
-        const hasReturned = false;
-
-        setExpenseAmount((prevExpenseAmount) => (prevExpenseAmount += amount));
+        setExpenseAmount((prevExpenseAmount) => (prevExpenseAmount += personData.amount));
 
         setPeopleData((prevPeopleData) => {
-            return [...prevPeopleData, { id, name, amount, hasReturned }];
+            return [...prevPeopleData, personData];
         });
     };
 
-    const removePersonHandler = (id) => {
-        const updatedPeopleData = [...peopleData].filter((personData) => personData.id !== id);
-
-        const personsIndex = peopleData.findIndex((personData) => personData.id === id);
-        const personsDue = peopleData[personsIndex].amount;
-
+    const removePersonHandler = (personsDue, updatedPeopleData) => {
         setExpenseAmount((prevExpenseAmount) => (prevExpenseAmount -= personsDue));
         setPeopleData(updatedPeopleData);
     };
