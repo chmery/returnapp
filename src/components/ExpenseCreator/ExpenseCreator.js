@@ -6,13 +6,15 @@ import PeopleList from "./PeopleList/PeopleList";
 import { useContext, useRef, useState } from "react";
 import ExpensesContext from "../../store/expenses-context";
 import ExpenseInfo from "./ExpenseInfo/ExpenseInfo";
+import ErrorModal from "../ErrorModal/ErrorModal";
 
 const ExpenseCreator = (props) => {
     const [peopleData, setPeopleData] = useState([]);
     const [expenseAmount, setExpenseAmount] = useState(0);
+    const [isErrorModalShown, setIsErrorModalShown] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const expensesContext = useContext(ExpensesContext);
-
     const titleInput = useRef();
 
     const addPersonHandler = (personData) => {
@@ -41,19 +43,18 @@ const ExpenseCreator = (props) => {
         setPeopleData(updatedPeopleData);
     };
 
+    const closeErrorModalHandler = () => setIsErrorModalShown(false);
+
     const isExpenseValid = (title) => {
         if (title.length === 0) {
-            console.log("Title cant be empty");
-            return false;
-        }
-
-        if (title.length > 40) {
-            console.log("You have exceeded the maximum number of characters per title");
+            setIsErrorModalShown(true);
+            setErrorMessage("Title can't be empty");
             return false;
         }
 
         if (peopleData.length === 0) {
-            console.log("You need to add 1 person at least.");
+            setIsErrorModalShown(true);
+            setErrorMessage("You need to add one person at least.");
             return false;
         }
 
@@ -79,20 +80,29 @@ const ExpenseCreator = (props) => {
     };
 
     return (
-        <div className={classes.creator}>
-            <h1>Expense Creator</h1>
-            <Input ref={titleInput} label={"Title"} input={{ id: "title", type: "text" }} />
-            <ExpenseInfo returnAmount={expenseAmount} debtorsAmount={peopleData.length} />
-            <PeopleList
-                onAddPerson={addPersonHandler}
-                onRemovePerson={removePersonHandler}
-                peopleData={peopleData}
-            />
-            <div className={classes.action}>
-                <Button onClick={props.onCancel}>Cancel</Button>
-                <Button onClick={createExpenseHandler}>Create Expense</Button>
+        <>
+            {isErrorModalShown && (
+                <ErrorModal onClose={closeErrorModalHandler} message={errorMessage} />
+            )}
+            <div className={classes.creator}>
+                <h1>Expense Creator</h1>
+                <Input
+                    ref={titleInput}
+                    label={"Title"}
+                    input={{ id: "title", type: "text", maxlength: "30" }}
+                />
+                <ExpenseInfo returnAmount={expenseAmount} debtorsAmount={peopleData.length} />
+                <PeopleList
+                    onAddPerson={addPersonHandler}
+                    onRemovePerson={removePersonHandler}
+                    peopleData={peopleData}
+                />
+                <div className={classes.action}>
+                    <Button onClick={props.onCancel}>Cancel</Button>
+                    <Button onClick={createExpenseHandler}>Create Expense</Button>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

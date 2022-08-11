@@ -33,8 +33,6 @@ const PeopleList = (props) => {
         const personsIndex = peopleData.findIndex((personData) => personData.id === id);
         const personsDue = peopleData[personsIndex].amount;
 
-        console.log(personsDue);
-
         props.onRemovePerson(personsDue, updatedPeopleData);
     };
 
