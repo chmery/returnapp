@@ -10,6 +10,8 @@
 body {
     margin: 0;
     background: var(--bg);
+    position: relative;
+    height: 100vh;
 }
 
 main {

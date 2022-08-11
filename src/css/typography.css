@@ -4,6 +4,11 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
 p {
     margin: 0;
 }
