@@ -16,7 +16,13 @@ const ExpenseCreator = (props) => {
     const titleInput = useRef();
 
     const addPersonHandler = (personData) => {
-        setExpenseAmount((prevExpenseAmount) => (prevExpenseAmount += personData.amount));
+        setExpenseAmount((prevExpenseAmount) => {
+            const prevAmountFormated = prevExpenseAmount * 100;
+            const newAmountFormated = personData.amount * 100;
+
+            const updatedExpenseAmount = (prevAmountFormated + newAmountFormated) / 100;
+            return updatedExpenseAmount;
+        });
 
         setPeopleData((prevPeopleData) => {
             return [...prevPeopleData, personData];
@@ -24,7 +30,14 @@ const ExpenseCreator = (props) => {
     };
 
     const removePersonHandler = (personsDue, updatedPeopleData) => {
-        setExpenseAmount((prevExpenseAmount) => (prevExpenseAmount -= personsDue));
+        setExpenseAmount((prevExpenseAmount) => {
+            const prevAmountFormated = prevExpenseAmount * 100;
+            const personsDueFormated = personsDue * 100;
+
+            const updatedExpenseAmount = (prevAmountFormated - personsDueFormated) / 100;
+            return updatedExpenseAmount;
+        });
+
         setPeopleData(updatedPeopleData);
     };
 

@@ -17,11 +17,6 @@ const PeopleList = (props) => {
         const amount = personData.amount;
         const id = `${name.slice(0, 1)}${peopleData.length}`;
 
-        if (name.length === 0 || amount === 0) {
-            console.log("Name and amount cant be empty");
-            return;
-        }
-
         const person = {
             id: id,
             name: name,
@@ -37,6 +32,8 @@ const PeopleList = (props) => {
 
         const personsIndex = peopleData.findIndex((personData) => personData.id === id);
         const personsDue = peopleData[personsIndex].amount;
+
+        console.log(personsDue);
 
         props.onRemovePerson(personsDue, updatedPeopleData);
     };
@@ -60,7 +57,7 @@ const PeopleList = (props) => {
             <DarkCard>
                 {peopleList}
                 {isAddPeopleShown && (
-                    <AddPeople onCancel={hideAddPeopleHandler} onAddPerson={addPersonHandler} />
+                    <AddPeople onHide={hideAddPeopleHandler} onAddPerson={addPersonHandler} />
                 )}
                 {!isAddPeopleShown && <PlusButton onClick={showAddPeopleHandler} />}
             </DarkCard>

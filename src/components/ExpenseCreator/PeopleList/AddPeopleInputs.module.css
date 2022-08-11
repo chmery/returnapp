@@ -4,9 +4,43 @@
     margin-bottom: 1em;
 }
 
+.inputs input[id="amount"] {
+    width: 60%;
+    height: 3em;
+    border: none;
+    background: var(--dark);
+    border-radius: 0.8em;
+    font-size: 1.125rem;
+    padding: 1em;
+    text-align: center;
+}
+
+.inputs input[id="amount"]:focus {
+    outline: none;
+}
+
+.inputs input[id="amount"]::placeholder {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.inputs input[id="amount"]::-webkit-outer-spin-button,
+.inputs input[id="amount"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 @media screen and (max-width: 470px) {
     .inputs {
         margin-bottom: 0.8em;
         column-gap: 0.8em;
+    }
+
+    .inputs input[id="amount"] {
+        height: 2.7em;
+    }
+
+    .inputs input[id="amount"]::placeholder {
+        font-size: 0.875rem;
     }
 }

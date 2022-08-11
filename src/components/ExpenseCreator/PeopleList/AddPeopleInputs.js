@@ -1,3 +1,5 @@
+import CurrencyInput from "react-currency-input-field";
+
 import Input from "../../UI/Input";
 import classes from "./AddPeopleInputs.module.css";
 
@@ -9,16 +11,17 @@ const AddPeopleInputs = (props) => {
                 input={{ id: "name", type: "text", placeholder: "Name", value: props.nameValue }}
                 onChange={props.onNameChange}
             />
-            <Input
-                ref={props.amountRef}
-                narrow={true}
-                input={{
-                    id: "return-amount",
-                    type: "number",
-                    placeholder: "Amount",
-                    value: props.amountValue,
-                }}
-                onChange={props.onAmountChange}
+            <CurrencyInput
+                id="amount"
+                placeholder="Amount"
+                prefix="$"
+                maxLength={7}
+                allowNegativeValue={false}
+                decimalSeparator="."
+                defaultValue={0}
+                decimalsLimit={2}
+                value={props.amountValue}
+                onValueChange={(value) => props.onAmountChange(value)}
             />
         </div>
     );
