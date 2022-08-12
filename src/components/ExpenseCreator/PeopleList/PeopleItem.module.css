@@ -13,3 +13,9 @@
     font-weight: 600;
     color: var(--highlight);
 }
+
+@media screen and (max-width: 470px) {
+    .name {
+        margin-bottom: 0;
+    }
+}

@@ -90,7 +90,7 @@ const ExpenseCreator = (props) => {
                 <Input
                     ref={titleInput}
                     label={"Title"}
-                    input={{ id: "title", type: "text", maxlength: "30" }}
+                    input={{ id: "title", type: "text", maxLength: "30" }}
                 />
                 <ExpenseInfo returnAmount={expenseAmount} debtorsAmount={peopleData.length} />
                 <PeopleList
