@@ -7,9 +7,7 @@ const Header = () => {
 
     useEffect(() => {
         const scrollHandler = () => {
-            const headerOffsetTop = document.querySelector("header").offsetTop;
-
-            window.pageYOffset > headerOffsetTop
+            window.pageYOffset > 0
                 ? setClasses(`${styles.header} ${styles.shadow}`)
                 : setClasses(defaultClass);
         };
@@ -22,9 +20,12 @@ const Header = () => {
     }, []);
 
     return (
-        <header className={classes}>
-            <p>ReturnApp</p>
-        </header>
+        <>
+            <header className={classes}>
+                <p>ReturnApp</p>
+            </header>
+            <div id="popups" className={styles.popup}></div>
+        </>
     );
 };
 

@@ -1,13 +1,22 @@
 .header {
     text-align: center;
     padding: 1.5em 0;
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 5;
     background: var(--bg);
     transition: box-shadow 0.5s;
     min-width: 23.125rem;
     width: 100%;
+}
+
+.popup {
+    z-index: 15;
+    position: fixed;
+    top: 6em;
+    margin: 0 1em;
+    left: 0;
+    right: 0;
 }
 
 .shadow {

@@ -5,8 +5,10 @@ const ErrorModal = (props) => {
     return (
         <Modal onClose={props.onClose}>
             <AlertIcon />
-            <h3>Whoops!</h3>
-            <p>{props.message}</p>
+            <div>
+                <h3>Whoops!</h3>
+                <p>{props.message}</p>
+            </div>
         </Modal>
     );
 };

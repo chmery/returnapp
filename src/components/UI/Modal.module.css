@@ -1,32 +1,26 @@
-.backdrop {
-    background: #000;
-    opacity: 0.5;
-    position: absolute;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
+.modal {
+    background: var(--dark);
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    column-gap: 2em;
+    max-width: 40rem;
+    min-width: 23.125rem;
+    margin: 0 auto;
+    height: 7em;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.13);
 }
 
-.modal {
-    text-align: center;
-    position: absolute;
-    z-index: 15;
-    background: var(--bg);
-    border-radius: 1em;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 28rem;
+.color {
+    border-radius: 1em 0 0 1em;
+    background: #ff5555;
+    height: 100%;
+    width: 1.5em;
 }
 
 .modal svg {
-    width: 5em;
-    height: 5em;
-    margin-bottom: 1.3em;
+    min-width: 5em;
+    min-height: 5em;
 }
 
 .modal button {
@@ -37,8 +31,8 @@
     border: none;
     padding: 0.8em 2em;
     border-radius: 1em;
-    margin: 0 auto;
-    margin-top: 2em;
+    margin-left: auto;
+    margin-right: 2em;
 }
 
 .modal button:hover {
@@ -47,7 +41,25 @@
 
 @media screen and (max-width: 470px) {
     .modal {
-        width: 90%;
-        min-width: 15rem;
+        column-gap: 0.5em;
+        height: 6em;
+    }
+
+    .modal svg {
+        min-width: 3em;
+        min-height: 3em;
+    }
+
+    .modal p {
+        font-size: 0.875rem;
+    }
+
+    .modal button {
+        padding: 0.6em 1.5em;
+        margin-right: 1em;
+    }
+
+    .color {
+        width: 1em;
     }
 }

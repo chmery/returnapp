@@ -1,13 +1,10 @@
 import ReactDOM from "react-dom";
 import classes from "./Modal.module.css";
 
-const BackDrop = (props) => {
-    return <div className={classes.backdrop} onClick={props.onClose} />;
-};
-
 const ModalContent = (props) => {
     return (
         <div className={classes.modal}>
+            <div className={classes.color} />
             {props.children}
             <button onClick={props.onClose}>Okay</button>
         </div>
@@ -15,14 +12,13 @@ const ModalContent = (props) => {
 };
 
 const Modal = (props) => {
-    const overlayElements = document.getElementById("overlays");
+    const modalElements = document.getElementById("popups");
 
     return (
         <>
-            {ReactDOM.createPortal(<BackDrop onClose={props.onClose} />, overlayElements)}
             {ReactDOM.createPortal(
                 <ModalContent onClose={props.onClose}>{props.children}</ModalContent>,
-                overlayElements
+                modalElements
             )}
         </>
     );

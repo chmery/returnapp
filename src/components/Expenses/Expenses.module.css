@@ -10,11 +10,7 @@
     text-align: center;
 }
 
-@media screen and (max-width: 480px) {
-    .expenses {
-        margin: 2rem auto;
-    }
-
+@media screen and (max-width: 470px) {
     .start-text {
         font-size: 1.125rem;
     }
