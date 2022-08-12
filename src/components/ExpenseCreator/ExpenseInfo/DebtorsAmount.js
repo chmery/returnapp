@@ -9,7 +9,7 @@ const DebtorsAmount = (props) => {
             <PersonIcon />
             <div className={classes.output}>
                 <p>Debtors:</p>
-                <p className={classes.numbers}>{debtorsAmount}</p>
+                <p className={classes.numbers}>{debtorsAmount} / 10</p>
             </div>
         </div>
     );

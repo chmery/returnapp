@@ -11,6 +11,7 @@ import ErrorModal from "../ErrorModal/ErrorModal";
 const ExpenseCreator = (props) => {
     const [peopleData, setPeopleData] = useState([]);
     const [expenseAmount, setExpenseAmount] = useState(0);
+
     const [isErrorModalShown, setIsErrorModalShown] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 

@@ -35,6 +35,12 @@ const AddPeople = (props) => {
             return;
         }
 
+        if (props.peopleAmount === 10) {
+            setIsErrorModalShown(true);
+            setErrorMessage("You have added the maximum number of debtors.");
+            return;
+        }
+
         props.onAddPerson(personData);
         props.onHide();
         setName("");

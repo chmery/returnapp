@@ -55,7 +55,11 @@ const PeopleList = (props) => {
             <DarkCard>
                 {peopleList}
                 {isAddPeopleShown && (
-                    <AddPeople onHide={hideAddPeopleHandler} onAddPerson={addPersonHandler} />
+                    <AddPeople
+                        onHide={hideAddPeopleHandler}
+                        onAddPerson={addPersonHandler}
+                        peopleAmount={peopleData.length}
+                    />
                 )}
                 {!isAddPeopleShown && <PlusButton onClick={showAddPeopleHandler} />}
             </DarkCard>
