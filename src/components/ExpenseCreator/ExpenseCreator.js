@@ -5,7 +5,7 @@ import Input from "../UI/Input";
 import PeopleList from "./PeopleList/PeopleList";
 import { useContext, useRef, useState } from "react";
 import ExpensesContext from "../../store/expenses-context";
-import ExpenseInfo from "./ExpenseInfo/ExpenseInfo";
+import ExpenseInfo from "./ExpenseInfo";
 import ErrorModal from "../ErrorModal/ErrorModal";
 
 const ExpenseCreator = (props) => {
