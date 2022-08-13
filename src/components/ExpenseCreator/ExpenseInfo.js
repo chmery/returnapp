@@ -5,7 +5,7 @@ const DebtorsInfo = (props) => {
     const debtorsNum = props.debtorsAmount;
 
     return (
-        <div style={{ width: "40%" }}>
+        <div>
             <PersonIcon />
             <div>
                 <p>Debtors:</p>
@@ -19,7 +19,7 @@ const ReturnInfo = (props) => {
     const returnAmount = `$${props.returnAmount}`;
 
     return (
-        <div style={{ width: "60%" }}>
+        <div style={{ flex: "1 40%" }}>
             <BarsIcon />
             <div>
                 <p>Return amount:</p>

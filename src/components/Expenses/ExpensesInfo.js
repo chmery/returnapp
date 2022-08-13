@@ -7,7 +7,7 @@ const TotalReturnInfo = (props) => {
     const leftToReturn = `$${props.leftToReturn}`;
 
     return (
-        <div style={{ width: "60%" }}>
+        <div style={{ flex: "1 40%" }}>
             <BarsIcon />
             <div>
                 <p>Total to return:</p>
@@ -21,7 +21,7 @@ const TotalExpenses = (props) => {
     const expensesNum = props.expensesNum;
 
     return (
-        <div style={{ width: "40%" }}>
+        <div>
             <LayersIcon />
             <div>
                 <p>Expenses:</p>

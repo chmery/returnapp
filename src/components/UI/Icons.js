@@ -1,4 +1,4 @@
-export const BarsIcon = () => {
+export const BarsIcon = (props) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ export const BarsIcon = () => {
             height="4em"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#00FF94"
+            stroke={props.color ? props.color : "#00ff94"}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"

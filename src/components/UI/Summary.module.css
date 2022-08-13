@@ -1,6 +1,8 @@
 .summary {
     display: flex;
     column-gap: 1em;
+    row-gap: 1em;
+    flex-wrap: wrap;
 }
 
 .summary svg {
@@ -25,6 +27,7 @@
 @media screen and (max-width: 470px) {
     .summary {
         column-gap: 0.5em;
+        row-gap: 0.5em;
     }
 
     .summary > div > div {

@@ -1,8 +1,6 @@
-import BrightCard from "../UI/Cards/BrightCard";
-import DarkCard from "../UI/Cards/DarkCard";
-import RemoveButton from "../UI/Buttons/RemoveButton";
-
-import classes from "./ManagedExpense.module.css";
+import Summary from "../UI/Summary";
+import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
+import { LayersIcon, BarsIcon } from "../UI/Icons";
 
 const ManagedExpense = (props) => {
     const { expenseData } = props;
@@ -14,25 +12,30 @@ const ManagedExpense = (props) => {
     const onRemoveHandler = () => props.onRemove(expenseData.id);
 
     return (
-        <DarkCard>
-            <BrightCard>
+        <Summary>
+            <div style={{ width: "100%" }}>
+                <LayersIcon />
                 <div>
-                    <p className={classes.title}>
-                        {title}
-                        <span className={classes.amount}>
-                            ( <span>{amount}</span> )
-                        </span>
-                    </p>
-                    <p className={classes.returned}>
-                        Returned:
-                        <span>{amountReturned}</span>
-                    </p>
+                    <p>Title:</p>
+                    <span>{title}</span>
                 </div>
-                <div className={classes.action}>
-                    <RemoveButton onClick={onRemoveHandler} />
+            </div>
+            <div style={{ flex: "1 30%" }}>
+                <BarsIcon color={"var(--red)"} />
+                <div>
+                    <p>To return:</p>
+                    <span>{amount}</span>
                 </div>
-            </BrightCard>
-        </DarkCard>
+            </div>
+            <div style={{ flex: "1 30%" }}>
+                <BarsIcon />
+                <div>
+                    <p>Returned:</p>
+                    <span>{amountReturned}</span>
+                </div>
+            </div>
+            <ButtonSecondary onClick={onRemoveHandler}>Remove Expense</ButtonSecondary>
+        </Summary>
     );
 };
 
