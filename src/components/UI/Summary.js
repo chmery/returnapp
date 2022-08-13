@@ -3,7 +3,7 @@ import DarkCard from "../UI/Cards/DarkCard";
 
 const Summary = (props) => {
     return (
-        <DarkCard>
+        <DarkCard style={{ marginBottom: "2em" }}>
             <div className={classes["summary"]}>{props.children}</div>
         </DarkCard>
     );

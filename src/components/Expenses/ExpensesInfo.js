@@ -4,14 +4,14 @@ import { useContext } from "react";
 import ExpensesContext from "../../store/expenses-context";
 
 const TotalReturnInfo = (props) => {
-    const totalReturnAmount = `$${props.totalReturnAmount}`;
+    const leftToReturn = `$${props.leftToReturn}`;
 
     return (
         <div style={{ width: "60%" }}>
             <BarsIcon />
             <div>
                 <p>Total to return:</p>
-                <span>{totalReturnAmount}</span>
+                <span>{leftToReturn}</span>
             </div>
         </div>
     );
@@ -34,16 +34,23 @@ const TotalExpenses = (props) => {
 const ExpensesInfo = () => {
     const expensesContext = useContext(ExpensesContext);
 
-    const totalReturnAmount = expensesContext.expenses.reduce(
-        (total, expense) => (total += expense.amount),
-        0
-    );
+    const calcTotal = (value) => {
+        const total =
+            expensesContext.expenses.reduce((total, expense) => (total += expense[value]), 0) * 100;
+
+        return total;
+    };
+
+    const totalToReturnAmount = calcTotal("amount");
+    const totalAmountReturned = calcTotal("amountReturned");
+
+    const leftToReturn = (totalToReturnAmount - totalAmountReturned) / 100;
 
     const expensesNum = expensesContext.expenses.length;
 
     return (
         <Summary>
-            <TotalReturnInfo totalReturnAmount={totalReturnAmount} />
+            <TotalReturnInfo leftToReturn={leftToReturn} />
             <TotalExpenses expensesNum={expensesNum} />
         </Summary>
     );
