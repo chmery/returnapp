@@ -1,22 +1,35 @@
 .title {
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0.4em;
 }
 
 .amount {
     font-size: 1rem;
 }
 
-.amount > span,
-.returned > span {
+.amount > span {
     color: var(--highlight);
     font-weight: 600;
 }
 
-.returned {
-    font-size: 1rem;
-    font-weight: 400;
+.status {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5em;
+}
+
+.status > div {
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 100vh;
+}
+
+.finished {
+    background-color: var(--green);
+}
+
+.unfinished {
+    background-color: var(--yellow);
 }
 
 .action {
