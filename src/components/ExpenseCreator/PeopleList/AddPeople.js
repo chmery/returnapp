@@ -23,7 +23,7 @@ const AddPeople = (props) => {
             amount: enteredAmount,
         };
 
-        if (enteredName.length === 0 || enteredAmount < 1) {
+        if (enteredName.length === 0 || !enteredAmount) {
             setIsErrorModalShown(true);
             setErrorMessage("The name and amount field cannot be empty.");
             return;
