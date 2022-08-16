@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import classes from "./Modal.module.css";
 
 const BackDrop = (props) => {
-    return <div className={classes.backdrop} onClick={props.onClose} />;
+    return <div className={classes.backdrop} onClick={props.onClick} />;
 };
 
 const ModalContent = (props) => {
@@ -11,7 +11,6 @@ const ModalContent = (props) => {
         <div className={`${classes.modal} ${props.exitClass}`}>
             <div className={classes.color} />
             {props.children}
-            <button onClick={props.onClose}>Okay</button>
         </div>
     );
 };
@@ -22,29 +21,24 @@ const Modal = (props) => {
     const modalElements = document.getElementById("popups");
     const backdropElements = document.getElementById("overlays");
 
-    const onCloseHandler = () => {
+    const onBackdropClickHandler = () => {
         setExitClass(`${classes.exit}`);
+        props.onBackdropClick();
     };
 
     useEffect(() => {
-        if (exitClass) {
-            const waitTillAnimationEnds = setTimeout(props.onClose, 400);
-
-            return () => {
-                clearTimeout(waitTillAnimationEnds);
-            };
+        if (props.isModalClosing) {
+            setExitClass(`${classes.exit}`);
         }
-    }, [exitClass]);
+    }, [props.isModalClosing]);
 
     return (
         <>
             {ReactDOM.createPortal(
-                <ModalContent onClose={onCloseHandler} exitClass={exitClass}>
-                    {props.children}
-                </ModalContent>,
+                <ModalContent exitClass={exitClass}>{props.children}</ModalContent>,
                 modalElements
             )}
-            {ReactDOM.createPortal(<BackDrop onClose={onCloseHandler} />, backdropElements)}
+            {ReactDOM.createPortal(<BackDrop onClick={onBackdropClickHandler} />, backdropElements)}
         </>
     );
 };

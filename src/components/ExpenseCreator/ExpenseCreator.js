@@ -7,15 +7,15 @@ import { useContext, useRef, useState } from "react";
 import ExpensesContext from "../../store/expenses-context";
 import ExpenseInfo from "./ExpenseInfo";
 import ErrorModal from "../ErrorModal/ErrorModal";
+import useModal from "../../hooks/use-modal";
 
 const ExpenseCreator = (props) => {
+    const expensesContext = useContext(ExpensesContext);
+    const { showModal, closeModal, isModalShown, message, isClosing } = useModal();
+
     const [peopleData, setPeopleData] = useState([]);
     const [expenseAmount, setExpenseAmount] = useState(0);
 
-    const [isErrorModalShown, setIsErrorModalShown] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-
-    const expensesContext = useContext(ExpensesContext);
     const titleInput = useRef();
 
     const addPersonHandler = (personData) => {
@@ -44,18 +44,14 @@ const ExpenseCreator = (props) => {
         setPeopleData(updatedPeopleData);
     };
 
-    const closeErrorModalHandler = () => setIsErrorModalShown(false);
-
     const isExpenseValid = (title) => {
         if (title.length === 0) {
-            setIsErrorModalShown(true);
-            setErrorMessage("Title can't be empty");
+            showModal("Title can't be empty");
             return false;
         }
 
         if (peopleData.length === 0) {
-            setIsErrorModalShown(true);
-            setErrorMessage("You need to add one person at least.");
+            showModal("You need to add one person at least.");
             return false;
         }
 
@@ -64,12 +60,13 @@ const ExpenseCreator = (props) => {
 
     const createExpenseHandler = () => {
         const title = titleInput.current.value;
+        const id = `${title}${expensesContext.expenses.length}`;
         const amount = expenseAmount;
 
         if (!isExpenseValid(title)) return;
 
         const expense = {
-            id: `${title}${expensesContext.expenses.length}`,
+            id: id,
             title: title,
             amount: amount,
             amountReturned: 0,
@@ -82,8 +79,12 @@ const ExpenseCreator = (props) => {
 
     return (
         <>
-            {isErrorModalShown && (
-                <ErrorModal onClose={closeErrorModalHandler} message={errorMessage} />
+            {isModalShown && (
+                <ErrorModal
+                    onModalClose={closeModal}
+                    isModalClosing={isClosing}
+                    message={message}
+                />
             )}
             <div className={classes.creator}>
                 <h1>Expense Creator</h1>

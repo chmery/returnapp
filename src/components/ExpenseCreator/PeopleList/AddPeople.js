@@ -3,14 +3,13 @@ import ButtonSecondary from "../../UI/Buttons/ButtonSecondary";
 import { useRef, useState } from "react";
 import AddPeopleInputs from "./AddPeopleInputs";
 import ErrorModal from "../../ErrorModal/ErrorModal";
+import useModal from "../../../hooks/use-modal";
 
 const AddPeople = (props) => {
+    const { showModal, closeModal, isModalShown, message, isClosing } = useModal();
+
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
-    const [isErrorModalShown, setIsErrorModalShown] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-
-    const closeErrorModalHandler = () => setIsErrorModalShown(false);
 
     const nameInput = useRef();
 
@@ -24,20 +23,17 @@ const AddPeople = (props) => {
         };
 
         if (enteredName.length === 0 || !enteredAmount) {
-            setIsErrorModalShown(true);
-            setErrorMessage("The name and amount field cannot be empty.");
+            showModal("The name and amount field cannot be empty.");
             return;
         }
 
         if (enteredAmount > 5000) {
-            setIsErrorModalShown(true);
-            setErrorMessage("The maximum amount you can enter is $5000.");
+            showModal("The maximum amount you can enter is $5000.");
             return;
         }
 
         if (props.peopleAmount === 10) {
-            setIsErrorModalShown(true);
-            setErrorMessage("You have added the maximum number of debtors.");
+            showModal("You have added the maximum number of debtors.");
             return;
         }
 
@@ -54,8 +50,12 @@ const AddPeople = (props) => {
 
     return (
         <>
-            {isErrorModalShown && (
-                <ErrorModal onClose={closeErrorModalHandler} message={errorMessage} />
+            {isModalShown && (
+                <ErrorModal
+                    onModalClose={closeModal}
+                    isModalClosing={isClosing}
+                    message={message}
+                />
             )}
             <div className={classes["add-people"]}>
                 <AddPeopleInputs
