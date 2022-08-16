@@ -7,12 +7,11 @@ import classes from "./ExpenseManager.module.css";
 import ManagedExpense from "./ManagedExpense";
 import PeopleList from "./PeopleList";
 
-const ExpenseManager = (props) => {
+const ExpenseManager = () => {
     const expensesContext = useContext(ExpensesContext);
     const { managedExpense, setManagedExpense, onRemove, onCloseManager } = expensesContext;
 
     const removeManagedExpenseHandler = (id) => {
-        onCloseManager();
         onRemove(id);
     };
 
@@ -40,7 +39,7 @@ const ExpenseManager = (props) => {
             <h1>Expense Manager</h1>
             <ManagedExpense expenseData={managedExpense} onRemove={removeManagedExpenseHandler} />
             <PeopleList managedExpense={managedExpense} onCheckPerson={checkPersonHandler} />
-            <Button onClick={props.onCloseManager}>
+            <Button onClick={onCloseManager}>
                 <LeftIcon /> Go back
             </Button>
         </div>

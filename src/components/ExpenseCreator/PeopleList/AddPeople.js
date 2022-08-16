@@ -2,7 +2,7 @@ import classes from "./AddPeople.module.css";
 import ButtonSecondary from "../../UI/Buttons/ButtonSecondary";
 import { useRef, useState } from "react";
 import AddPeopleInputs from "./AddPeopleInputs";
-import ErrorModal from "../../ErrorModal/ErrorModal";
+import ErrorModal from "../../Modals/ErrorModal";
 import useModal from "../../../hooks/use-modal";
 
 const AddPeople = (props) => {

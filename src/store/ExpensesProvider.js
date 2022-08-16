@@ -1,29 +1,42 @@
 import ExpensesContext from "./expenses-context";
 import { useState } from "react";
+import ConfirmModal from "../components/Modals/ConfirmModal";
+import useModal from "../hooks/use-modal";
 
 const ExpensesProvider = (props) => {
+    const { showModal, closeModal, isModalShown, isClosing } = useModal();
     const [expensesData, setExpensesData] = useState([]);
     const [managedExpense, setManagedExpense] = useState(null);
+    const [idToRemove, setIdToRemove] = useState(null);
 
-    const onCreateExpenseHandler = (expenseData) => {
+    const createExpenseHandler = (expenseData) => {
         setExpensesData((prevExpensesData) => {
             return [...prevExpensesData, expenseData];
         });
     };
 
-    const onRemoveExpenseHandler = (id) => {
-        const updatedExpensesData = [...expensesData].filter((personData) => personData.id !== id);
-        setExpensesData(updatedExpensesData);
+    const confirmRemoveHandler = (id) => {
+        setIdToRemove(id);
+        showModal();
     };
 
-    const onManageExpenseHandler = (id) => {
+    const removeExpenseHandler = () => {
+        const updatedExpensesData = [...expensesData].filter(
+            (personData) => personData.id !== idToRemove
+        );
+        setExpensesData(updatedExpensesData);
+        setManagedExpense(null);
+        closeModal();
+    };
+
+    const manageExpenseHandler = (id) => {
         const managedExpenseIndex = expensesData.findIndex((expense) => expense.id === id);
         const managedExpense = expensesData[managedExpenseIndex];
 
         setManagedExpense(managedExpense);
     };
 
-    const onCloseManagerHandler = () => {
+    const closeManagerHandler = () => {
         const managedExpenseIndex = expensesData.findIndex(
             (expense) => expense.id === managedExpense.id
         );
@@ -36,18 +49,27 @@ const ExpensesProvider = (props) => {
 
     const expensesContext = {
         expenses: expensesData,
-        managedExpense: managedExpense,
-        setManagedExpense: setManagedExpense,
-        onCloseManager: onCloseManagerHandler,
-        onManage: onManageExpenseHandler,
-        onCreate: onCreateExpenseHandler,
-        onRemove: onRemoveExpenseHandler,
+        managedExpense,
+        setManagedExpense,
+        onCloseManager: closeManagerHandler,
+        onManage: manageExpenseHandler,
+        onCreate: createExpenseHandler,
+        onRemove: confirmRemoveHandler,
     };
 
     return (
-        <ExpensesContext.Provider value={expensesContext}>
-            {props.children}
-        </ExpensesContext.Provider>
+        <>
+            {isModalShown && (
+                <ConfirmModal
+                    onModalClose={closeModal}
+                    isModalClosing={isClosing}
+                    onConfirm={removeExpenseHandler.bind(null, idToRemove)}
+                />
+            )}
+            <ExpensesContext.Provider value={expensesContext}>
+                {props.children}
+            </ExpensesContext.Provider>
+        </>
     );
 };
 

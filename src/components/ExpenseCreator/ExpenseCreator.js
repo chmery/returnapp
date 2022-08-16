@@ -6,7 +6,7 @@ import PeopleList from "./PeopleList/PeopleList";
 import { useContext, useRef, useState } from "react";
 import ExpensesContext from "../../store/expenses-context";
 import ExpenseInfo from "./ExpenseInfo";
-import ErrorModal from "../ErrorModal/ErrorModal";
+import ErrorModal from "../Modals/ErrorModal";
 import useModal from "../../hooks/use-modal";
 
 const ExpenseCreator = (props) => {

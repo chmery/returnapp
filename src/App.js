@@ -10,13 +10,11 @@ import ExpenseManager from "./components/ExpenseManager/ExpenseManager";
 
 function App() {
     const expensesContext = useContext(ExpensesContext);
-    const { managedExpense, onCloseManager } = expensesContext;
+    const { managedExpense } = expensesContext;
     const [isCreatorShown, setIsCreatorShown] = useState(false);
 
     const openCreatorHandler = () => setIsCreatorShown(true);
     const closeCreatorHandler = () => setIsCreatorShown(false);
-
-    const closeManagerHandler = () => onCloseManager();
 
     return (
         <>
@@ -31,7 +29,7 @@ function App() {
                         onCreateExpense={closeCreatorHandler}
                     />
                 )}
-                {managedExpense && <ExpenseManager onCloseManager={closeManagerHandler} />}
+                {managedExpense && <ExpenseManager />}
             </main>
         </>
     );

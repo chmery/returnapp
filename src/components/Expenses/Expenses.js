@@ -13,16 +13,24 @@ const Expenses = (props) => {
     const expensesContext = useContext(ExpensesContext);
     const areExpensesEmpty = expensesContext.expenses.length === 0 ? true : false;
 
-    return (
-        <div className={classes.expenses}>
-            <h1>Your Expenses</h1>
+    const expensesContent = (
+        <>
             {areExpensesEmpty && <StarterMessage />}
             {!areExpensesEmpty && <ExpensesInfo />}
             {!areExpensesEmpty && <ExpensesList />}
-            <Button onClick={props.onOpenCreator}>
-                Add new expense <PlusIcon />
-            </Button>
-        </div>
+        </>
+    );
+
+    return (
+        <>
+            <div className={classes.expenses}>
+                <h1>Your Expenses</h1>
+                {expensesContent}
+                <Button onClick={props.onOpenCreator}>
+                    Add new expense <PlusIcon />
+                </Button>
+            </div>
+        </>
     );
 };
 
