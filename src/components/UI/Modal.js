@@ -9,7 +9,7 @@ const BackDrop = (props) => {
 const ModalContent = (props) => {
     return (
         <div className={`${classes.modal} ${props.exitClass}`}>
-            <div className={classes.color} />
+            <div className={classes.color} style={{ background: props.color }} />
             {props.children}
         </div>
     );
@@ -35,7 +35,9 @@ const Modal = (props) => {
     return (
         <>
             {ReactDOM.createPortal(
-                <ModalContent exitClass={exitClass}>{props.children}</ModalContent>,
+                <ModalContent exitClass={exitClass} color={props.color}>
+                    {props.children}
+                </ModalContent>,
                 modalElements
             )}
             {ReactDOM.createPortal(<BackDrop onClick={onBackdropClickHandler} />, backdropElements)}

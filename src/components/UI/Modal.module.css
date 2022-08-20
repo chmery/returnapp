@@ -14,7 +14,7 @@
     max-width: 40rem;
     min-width: 21rem;
     margin: 0 auto;
-    height: 7em;
+    height: 8em;
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.13);
     -webkit-animation: scale-up-center 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     animation: scale-up-center 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
@@ -25,38 +25,24 @@
     animation: slide-out-top 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
 }
 
-.action {
-    margin-left: auto;
-    margin-right: 2em;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    column-gap: 0.5em;
-    row-gap: 0.5em;
-    flex: 1 30%;
-}
-
 .color {
     border-radius: 1em 0 0 1em;
-    background: #ff5555;
     height: 100%;
     width: 1.5em;
 }
 
 .modal svg {
-    min-width: 5em;
-    min-height: 5em;
+    min-width: 4em;
+    min-height: 4em;
 }
 
 .modal button {
-    background: var(--red);
     cursor: pointer;
     transition: transform 0.1s;
     font-size: 1rem;
     border: none;
-    padding: 0.8em 2em;
-    border-radius: 1em;
+    padding: 0.7em 1.7em;
+    border-radius: 0.7em;
 }
 
 .modal button:hover {
@@ -70,8 +56,8 @@
     }
 
     .modal svg {
-        min-width: 3em;
-        min-height: 3em;
+        min-width: 2.5em;
+        min-height: 2.5em;
     }
 
     .modal p {
@@ -79,7 +65,7 @@
     }
 
     .modal button {
-        padding: 0.5em 1.5em;
+        padding: 0.4em 1.2em;
         margin-right: 0;
         border-radius: 0.6em;
     }

@@ -1,0 +1,9 @@
+.action {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: 1em;
+    justify-content: center;
+    row-gap: 0.5em;
+    column-gap: 0.5em;
+}
