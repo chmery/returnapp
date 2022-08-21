@@ -1,5 +1,5 @@
 import ExpensesContext from "./expenses-context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConfirmModal from "../components/Modals/ConfirmModal";
 import useModal from "../hooks/use-modal";
 
@@ -8,6 +8,16 @@ const ExpensesProvider = (props) => {
     const [expensesData, setExpensesData] = useState([]);
     const [managedExpense, setManagedExpense] = useState(null);
     const [idToRemove, setIdToRemove] = useState(null);
+
+    useEffect(() => {
+        const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses"));
+        setExpensesData(expensesFromLocalStorage);
+    }, []);
+
+    useEffect(() => {
+        const expenses = expensesData;
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+    }, [expensesData]);
 
     const createExpenseHandler = (expenseData) => {
         setExpensesData((prevExpensesData) => {
