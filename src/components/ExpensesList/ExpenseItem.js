@@ -15,7 +15,7 @@ const Status = (props) => {
         </>
     );
 
-    return <p className={classes.status}>{content}</p>;
+    return <div className={classes.status}>{content}</div>;
 };
 
 const ExpenseItem = (props) => {

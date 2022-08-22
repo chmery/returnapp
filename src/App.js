@@ -6,10 +6,10 @@ import ExpenseCreator from "./components/ExpenseCreator/ExpenseCreator";
 
 import ExpensesContext from "./store/expenses-context";
 import ExpenseManager from "./components/ExpenseManager/ExpenseManager";
+import { useSelector } from "react-redux";
 
 function App() {
-    const expensesContext = useContext(ExpensesContext);
-    const { managedExpense } = expensesContext;
+    const managedExpense = useSelector((state) => state.managedExpense);
     const [isCreatorShown, setIsCreatorShown] = useState(false);
 
     const openCreatorHandler = () => setIsCreatorShown(true);

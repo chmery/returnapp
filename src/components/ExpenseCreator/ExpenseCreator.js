@@ -3,14 +3,16 @@ import classes from "./ExpenseCreator.module.css";
 import Button from "../UI/Buttons/Button";
 import Input from "../UI/Input";
 import PeopleList from "./PeopleList/PeopleList";
-import { useContext, useRef, useState } from "react";
-import ExpensesContext from "../../store/expenses-context";
+import { useRef, useState } from "react";
 import ExpenseInfo from "./ExpenseInfo";
 import ErrorModal from "../Modals/ErrorModal";
 import useModal from "../../hooks/use-modal";
+import { useSelector, useDispatch } from "react-redux";
+import { expensesActions } from "../../store";
 
 const ExpenseCreator = (props) => {
-    const expensesContext = useContext(ExpensesContext);
+    const dispatch = useDispatch();
+    const expenses = useSelector((state) => state.expenses);
     const { showModal, closeModal, isModalShown, message, isClosing } = useModal();
 
     const [peopleData, setPeopleData] = useState([]);
@@ -60,7 +62,7 @@ const ExpenseCreator = (props) => {
 
     const createExpenseHandler = () => {
         const title = titleInput.current.value;
-        const id = `${title}${expensesContext.expenses.length}`;
+        const id = `${title}${expenses.length}`;
         const amount = expenseAmount;
 
         if (!isExpenseValid(title)) return;
@@ -73,7 +75,7 @@ const ExpenseCreator = (props) => {
             people: peopleData,
         };
 
-        expensesContext.onCreate(expense);
+        dispatch(expensesActions.createExpense(expense));
         props.onCreateExpense();
     };
 
