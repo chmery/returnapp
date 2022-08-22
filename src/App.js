@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Expenses from "./components/Expenses/Expenses";
 import ExpenseCreator from "./components/ExpenseCreator/ExpenseCreator";
 
-import "./css/typography.css";
 import ExpensesContext from "./store/expenses-context";
 import ExpenseManager from "./components/ExpenseManager/ExpenseManager";
 

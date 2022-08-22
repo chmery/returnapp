@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
-@import url("./css/variables.css");
 
 * {
     font-family: "Montserrat", sans-serif;
@@ -17,4 +16,18 @@ main {
     min-width: 23.125rem;
     margin: 0 auto;
     padding: 1em;
+}
+
+:root {
+    --dark: #17171a;
+    --bright-purple: #6448d4;
+    --purple: #6917f0;
+    --highlight: #8f8df0;
+    --item-bg: #1f202e;
+    --placeholder-text: #4f4d5e;
+    --unchecked: #3d3a4a;
+    --bg: #1a1a1d;
+    --red: #ff5555;
+    --green: #00ff94;
+    --yellow: #edb869;
 }
