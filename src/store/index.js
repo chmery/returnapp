@@ -4,6 +4,9 @@ const expensesSlice = createSlice({
     name: "expenses",
     initialState: { expenses: [], managedExpense: null, idToRemove: null },
     reducers: {
+        setExpensesData(state, { payload }) {
+            state.expenses = payload;
+        },
         createExpense(state, { payload }) {
             state.expenses.push(payload);
         },
@@ -45,6 +48,21 @@ const expensesSlice = createSlice({
         },
     },
 });
+
+export const getExpensesFromLocalStorage = () => {
+    return (dispatch) => {
+        const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses"));
+        if (!expensesFromLocalStorage) return;
+
+        dispatch(expensesActions.setExpensesData(expensesFromLocalStorage));
+    };
+};
+
+export const setExpensesInLocalStorage = (expenses) => {
+    return () => {
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+    };
+};
 
 const store = configureStore({
     reducer: expensesSlice.reducer,

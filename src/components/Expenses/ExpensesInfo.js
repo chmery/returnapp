@@ -1,7 +1,5 @@
 import Summary from "../UI/Summary";
 import { BarsIcon, LayersIcon } from "../UI/Icons";
-import { useContext } from "react";
-import ExpensesContext from "../../store/expenses-context";
 
 const TotalReturnInfo = (props) => {
     const leftToReturn = `$${props.leftToReturn}`;
@@ -31,12 +29,13 @@ const TotalExpenses = (props) => {
     );
 };
 
-const ExpensesInfo = () => {
-    const expensesContext = useContext(ExpensesContext);
+const ExpensesInfo = (props) => {
+    const { expenses } = props;
+
+    console.log(expenses);
 
     const calcTotal = (value) => {
-        const total =
-            expensesContext.expenses.reduce((total, expense) => (total += expense[value]), 0) * 100;
+        const total = expenses.reduce((total, expense) => (total += expense[value]), 0) * 100;
 
         return total;
     };
@@ -46,7 +45,7 @@ const ExpensesInfo = () => {
 
     const leftToReturn = (totalToReturnAmount - totalAmountReturned) / 100;
 
-    const expensesNum = expensesContext.expenses.length;
+    const expensesNum = expenses.length;
 
     return (
         <Summary>

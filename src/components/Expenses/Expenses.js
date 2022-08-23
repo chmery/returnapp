@@ -15,7 +15,7 @@ const Expenses = (props) => {
     const expensesContent = (
         <>
             {areExpensesEmpty && <StarterMessage />}
-            {!areExpensesEmpty && <ExpensesInfo />}
+            {!areExpensesEmpty && <ExpensesInfo expenses={expenses} />}
             {!areExpensesEmpty && <ExpensesList />}
         </>
     );

@@ -1,16 +1,26 @@
-import { useContext, useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header/Header";
 import Expenses from "./components/Expenses/Expenses";
 import ExpenseCreator from "./components/ExpenseCreator/ExpenseCreator";
 
-import ExpensesContext from "./store/expenses-context";
 import ExpenseManager from "./components/ExpenseManager/ExpenseManager";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getExpensesFromLocalStorage, setExpensesInLocalStorage } from "./store";
 
 function App() {
+    const dispatch = useDispatch();
     const managedExpense = useSelector((state) => state.managedExpense);
+    const expenses = useSelector((state) => state.expenses);
     const [isCreatorShown, setIsCreatorShown] = useState(false);
+
+    useEffect(() => {
+        dispatch(getExpensesFromLocalStorage());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(setExpensesInLocalStorage(expenses));
+    }, [expenses, dispatch]);
 
     const openCreatorHandler = () => setIsCreatorShown(true);
     const closeCreatorHandler = () => setIsCreatorShown(false);
