@@ -7,25 +7,22 @@ import { expensesActions } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
+import { useState } from "react";
 
 const ExpenseManager = () => {
     const { showModal, closeModal, isModalShown, isClosing } = useModal();
+    const [idToRemove, setIdToRemove] = useState(null);
     const dispatch = useDispatch();
     const managedExpense = useSelector((state) => state.managedExpense);
 
-    const removeManagedExpenseHandler = () => {
-        closeModal();
-        dispatch(expensesActions.removeExpense());
-    };
-
     const confirmRemoveHandler = (id) => {
         showModal();
-        dispatch(expensesActions.confirmRemove(id));
+        setIdToRemove(id);
     };
 
-    const cancelRemoveHandler = () => {
+    const removeManagedExpenseHandler = () => {
         closeModal();
-        dispatch(expensesActions.cancelRemove());
+        dispatch(expensesActions.removeExpense({ idToRemove }));
     };
 
     const checkPersonHandler = (id, returnAmount) => {
@@ -40,7 +37,7 @@ const ExpenseManager = () => {
         <>
             {isModalShown && (
                 <ConfirmModal
-                    onModalClose={cancelRemoveHandler}
+                    onModalClose={closeModal}
                     isModalClosing={isClosing}
                     onConfirm={removeManagedExpenseHandler}
                 />

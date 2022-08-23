@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const expensesSlice = createSlice({
     name: "expenses",
-    initialState: { expenses: [], managedExpense: null, idToRemove: null },
+    initialState: { expenses: [], managedExpense: null },
     reducers: {
         setExpensesData(state, { payload }) {
             state.expenses = payload;
@@ -10,14 +10,8 @@ const expensesSlice = createSlice({
         createExpense(state, { payload }) {
             state.expenses.push(payload);
         },
-        confirmRemove(state, { payload }) {
-            state.idToRemove = payload;
-        },
-        cancelRemove(state) {
-            state.idToRemove = null;
-        },
-        removeExpense(state) {
-            state.expenses = state.expenses.filter((expense) => expense.id !== state.idToRemove);
+        removeExpense(state, { payload }) {
+            state.expenses = state.expenses.filter((expense) => expense.id !== payload.idToRemove);
             state.idToRemove = null;
             state.managedExpense = null;
         },

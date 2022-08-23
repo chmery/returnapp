@@ -4,25 +4,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "../../store";
 import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
+import { useState } from "react";
 
 const ExpensesList = () => {
     const { showModal, closeModal, isModalShown, isClosing } = useModal();
+    const [idToRemove, setIdToRemove] = useState(null);
     const dispatch = useDispatch();
     const expenses = useSelector((state) => state.expenses);
 
     const confirmRemoveHandler = (id) => {
         showModal();
-        dispatch(expensesActions.confirmRemove(id));
+        setIdToRemove(id);
     };
 
     const removeExpenseHandler = () => {
         closeModal();
-        dispatch(expensesActions.removeExpense());
-    };
-
-    const cancelRemoveHandler = () => {
-        closeModal();
-        dispatch(expensesActions.cancelRemove());
+        dispatch(expensesActions.removeExpense({ idToRemove }));
     };
 
     const manageExpenseHandler = (id) => dispatch(expensesActions.setManagedExpense({ id }));
@@ -40,7 +37,7 @@ const ExpensesList = () => {
         <>
             {isModalShown && (
                 <ConfirmModal
-                    onModalClose={cancelRemoveHandler}
+                    onModalClose={closeModal}
                     isModalClosing={isClosing}
                     onConfirm={removeExpenseHandler}
                 />
