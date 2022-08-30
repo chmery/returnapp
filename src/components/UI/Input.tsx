@@ -4,8 +4,8 @@ import classes from "./Input.module.css";
 
 type InputProps = {
     narrow?: boolean;
-    label: string;
-    input: { id: string; type: string; maxLength: number };
+    label?: string;
+    input: {};
     onChange?: () => void;
 };
 

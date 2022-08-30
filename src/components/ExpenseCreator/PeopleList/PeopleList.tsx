@@ -18,15 +18,13 @@ const PeopleList = ({ peopleData, onAddPerson, onRemovePerson }: PeopleListProps
     const showAddPeopleHandler = () => setIsAddPeopleShown(true);
     const hideAddPeopleHandler = () => setIsAddPeopleShown(false);
 
-    const addPersonHandler = (personData: PersonData) => {
-        const name = personData.name;
-        const amount = personData.amount;
-        const id = `${name.slice(0, 1)}${peopleData.length}`;
+    const addPersonHandler = (enteredName: string, enteredAmount: number) => {
+        const id = `${enteredName.slice(0, 1)}${peopleData.length}`;
 
         const person = {
             id: id,
-            name: name,
-            amount: amount,
+            name: enteredName,
+            amount: enteredAmount,
             hasReturned: false,
         };
 
