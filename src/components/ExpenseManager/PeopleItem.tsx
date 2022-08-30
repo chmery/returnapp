@@ -2,15 +2,19 @@ import BrightCard from "../UI/Cards/BrightCard";
 import CheckButton from "../UI/Buttons/CheckButton";
 
 import classes from "./PeopleItem.module.css";
+import { PersonData } from "../ExpenseCreator/ExpenseCreator";
 
-const PeopleItem = (props) => {
-    const { personData } = props;
+type Props = {
+    personData: PersonData;
+    onCheckPerson: (id: string, amount: number) => void;
+};
+
+const PeopleItem = ({ personData, onCheckPerson }: Props) => {
     const amount = `$${personData.amount}`;
-
     const isAmountReturned = personData.hasReturned;
 
     const markCheckedHandler = () => {
-        props.onCheckPerson(personData.id, personData.amount);
+        onCheckPerson(personData.id, personData.amount);
     };
 
     const amountNotReturnedYet = (

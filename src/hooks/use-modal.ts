@@ -5,9 +5,9 @@ const useModal = () => {
     const [message, setMessage] = useState("");
     const [isClosing, setIsClosing] = useState(false);
 
-    const showModalHandler = (message) => {
+    const showModalHandler = (message?: string) => {
         setIsModalShown(true);
-        setMessage(message);
+        setMessage(message!);
     };
 
     const hideModalHandler = () => {

@@ -1,15 +1,27 @@
 import Summary from "../UI/Summary";
 import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
 import { LayersIcon, BarsIcon } from "../UI/Icons";
+import { PersonData } from "../ExpenseCreator/ExpenseCreator";
 
-const ManagedExpense = (props) => {
-    const { expenseData } = props;
+type ExpenseData = {
+    id: string;
+    title: string;
+    amount: number;
+    amountReturned: number;
+    people: PersonData[];
+};
 
+type Props = {
+    expenseData: ExpenseData;
+    onRemove: (id: string) => void;
+};
+
+const ExpenseData = ({ expenseData, onRemove }: Props) => {
     const title = `${expenseData.title} `;
     const amount = `$${expenseData.amount}`;
     const amountReturned = ` $${expenseData.amountReturned}`;
 
-    const onRemoveHandler = () => props.onRemove(expenseData.id);
+    const onRemoveHandler = () => onRemove(expenseData.id);
 
     return (
         <Summary>
@@ -39,4 +51,4 @@ const ManagedExpense = (props) => {
     );
 };
 
-export default ManagedExpense;
+export default ExpenseData;

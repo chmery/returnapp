@@ -12,7 +12,6 @@ const expensesSlice = createSlice({
         },
         removeExpense(state, { payload }) {
             state.expenses = state.expenses.filter((expense) => expense.id !== payload.idToRemove);
-            state.idToRemove = null;
             state.managedExpense = null;
         },
         setManagedExpense(state, { payload }) {
