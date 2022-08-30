@@ -43,7 +43,7 @@ const expensesSlice = createSlice({
     },
 });
 
-export const getExpensesFromLocalStorage = () => {
+/* export const getExpensesFromLocalStorage = () => {
     return (dispatch) => {
         const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses"));
         if (!expensesFromLocalStorage) return;
@@ -56,7 +56,7 @@ export const setExpensesInLocalStorage = (expenses) => {
     return () => {
         localStorage.setItem("expenses", JSON.stringify(expenses));
     };
-};
+}; */
 
 const store = configureStore({
     reducer: expensesSlice.reducer,

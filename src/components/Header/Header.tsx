@@ -17,7 +17,7 @@ const Header = () => {
         return () => {
             window.removeEventListener("scroll", scrollHandler);
         };
-    }, []);
+    }, [defaultClass]);
 
     return (
         <>

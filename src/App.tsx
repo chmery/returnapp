@@ -6,20 +6,27 @@ import ExpenseCreator from "./components/ExpenseCreator/ExpenseCreator";
 
 import ExpenseManager from "./components/ExpenseManager/ExpenseManager";
 import { useSelector, useDispatch } from "react-redux";
-import { getExpensesFromLocalStorage, setExpensesInLocalStorage } from "./store";
+import { expensesActions } from "./store";
+
+type State = {
+    expenses: [];
+    managedExpense: null;
+};
 
 function App() {
     const dispatch = useDispatch();
-    const managedExpense = useSelector((state) => state.managedExpense);
-    const expenses = useSelector((state) => state.expenses);
+    const managedExpense = useSelector((state: State) => state.managedExpense);
+    const expenses = useSelector((state: State) => state.expenses);
     const [isCreatorShown, setIsCreatorShown] = useState(false);
 
     useEffect(() => {
-        dispatch(getExpensesFromLocalStorage());
+        const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses") || "");
+        if (!expensesFromLocalStorage) return;
+        dispatch(expensesActions.setExpensesData(expensesFromLocalStorage));
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(setExpensesInLocalStorage(expenses));
+        localStorage.setItem("expenses", JSON.stringify(expenses));
     }, [expenses, dispatch]);
 
     const openCreatorHandler = () => setIsCreatorShown(true);
