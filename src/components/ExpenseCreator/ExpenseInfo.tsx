@@ -1,39 +1,40 @@
 import Summary from "../UI/Summary";
 import { PersonIcon, BarsIcon } from "../UI/Icons";
 
-const DebtorsInfo = (props) => {
-    const debtorsNum = props.debtorsAmount;
+type ExpenseInfo = {
+    debtorsAmount?: number;
+    returnAmount?: number;
+};
 
+const DebtorsInfo = ({ debtorsAmount }: ExpenseInfo) => {
     return (
         <div>
             <PersonIcon />
             <div>
                 <p>Debtors:</p>
-                <span>{debtorsNum} / 10</span>
+                <span>{debtorsAmount} / 10</span>
             </div>
         </div>
     );
 };
 
-const ReturnInfo = (props) => {
-    const returnAmount = `$${props.returnAmount}`;
-
+const ReturnInfo = ({ returnAmount }: ExpenseInfo) => {
     return (
         <div style={{ flex: "1 40%" }}>
             <BarsIcon />
             <div>
                 <p>Return amount:</p>
-                <span>{returnAmount}</span>
+                <span>{`${returnAmount}`}</span>
             </div>
         </div>
     );
 };
 
-const ExpenseInfo = (props) => {
+const ExpenseInfo = ({ returnAmount, debtorsAmount }: ExpenseInfo) => {
     return (
         <Summary>
-            <ReturnInfo returnAmount={props.returnAmount} />
-            <DebtorsInfo debtorsAmount={props.debtorsAmount} />
+            <ReturnInfo returnAmount={returnAmount} />
+            <DebtorsInfo debtorsAmount={debtorsAmount} />
         </Summary>
     );
 };

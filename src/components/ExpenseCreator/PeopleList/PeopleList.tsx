@@ -4,15 +4,21 @@ import PeopleItem from "./PeopleItem";
 import DarkCard from "../../UI/Cards/DarkCard";
 import PlusButton from "../../UI/Buttons/PlusButton";
 import { useState } from "react";
+import { PersonData } from "../ExpenseCreator";
 
-const PeopleList = (props) => {
-    const { peopleData } = props;
+type PeopleListProps = {
+    peopleData: PersonData[];
+    onAddPerson: (person: PersonData) => void;
+    onRemovePerson: (personDue: number, updatedPeopleData: PersonData[]) => void;
+};
+
+const PeopleList = ({ peopleData, onAddPerson, onRemovePerson }: PeopleListProps) => {
     const [isAddPeopleShown, setIsAddPeopleShown] = useState(false);
 
     const showAddPeopleHandler = () => setIsAddPeopleShown(true);
     const hideAddPeopleHandler = () => setIsAddPeopleShown(false);
 
-    const addPersonHandler = (personData) => {
+    const addPersonHandler = (personData: PersonData) => {
         const name = personData.name;
         const amount = personData.amount;
         const id = `${name.slice(0, 1)}${peopleData.length}`;
@@ -24,16 +30,16 @@ const PeopleList = (props) => {
             hasReturned: false,
         };
 
-        props.onAddPerson(person);
+        onAddPerson(person);
     };
 
-    const removePersonHandler = (id) => {
+    const removePersonHandler = (id: string) => {
         const updatedPeopleData = [...peopleData].filter((personData) => personData.id !== id);
 
         const personsIndex = peopleData.findIndex((personData) => personData.id === id);
         const personsDue = peopleData[personsIndex].amount;
 
-        props.onRemovePerson(personsDue, updatedPeopleData);
+        onRemovePerson(personsDue, updatedPeopleData);
     };
 
     const peopleList = peopleData.map((personData) => {

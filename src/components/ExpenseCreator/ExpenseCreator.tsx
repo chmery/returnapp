@@ -20,17 +20,24 @@ type State = {
     managedExpense: null;
 };
 
+export type PersonData = {
+    id: string;
+    name: string;
+    amount: number;
+    hasReturned: boolean;
+};
+
 const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {
     const dispatch = useDispatch();
     const expenses = useSelector((state: State) => state.expenses);
     const { showModal, closeModal, isModalShown, message, isClosing } = useModal();
 
-    const [peopleData, setPeopleData] = useState<{}[]>([]);
+    const [peopleData, setPeopleData] = useState<PersonData[]>([]);
     const [expenseAmount, setExpenseAmount] = useState(0);
 
     const titleInput = useRef<HTMLInputElement>(null!);
 
-    const addPersonHandler = (personData: { name: string; amount: number }) => {
+    const addPersonHandler = (personData: PersonData) => {
         setExpenseAmount((prevExpenseAmount) => {
             const prevAmountFormated = prevExpenseAmount * 100;
             const newAmountFormated = personData.amount * 100;
@@ -44,7 +51,7 @@ const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {
         });
     };
 
-    const removePersonHandler = (personsDue: number, updatedPeopleData: {}[]) => {
+    const removePersonHandler = (personsDue: number, updatedPeopleData: PersonData[]) => {
         setExpenseAmount((prevExpenseAmount) => {
             const prevAmountFormated = prevExpenseAmount * 100;
             const personsDueFormated = personsDue * 100;
