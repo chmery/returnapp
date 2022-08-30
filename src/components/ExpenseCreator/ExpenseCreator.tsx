@@ -10,17 +10,27 @@ import useModal from "../../hooks/use-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "../../store";
 
-const ExpenseCreator = (props) => {
+type CreatorProps = {
+    onCreateExpense: () => void;
+    onCancel: () => void;
+};
+
+type State = {
+    expenses: {}[];
+    managedExpense: null;
+};
+
+const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {
     const dispatch = useDispatch();
-    const expenses = useSelector((state) => state.expenses);
+    const expenses = useSelector((state: State) => state.expenses);
     const { showModal, closeModal, isModalShown, message, isClosing } = useModal();
 
-    const [peopleData, setPeopleData] = useState([]);
+    const [peopleData, setPeopleData] = useState<{}[]>([]);
     const [expenseAmount, setExpenseAmount] = useState(0);
 
-    const titleInput = useRef();
+    const titleInput = useRef<HTMLInputElement>(null!);
 
-    const addPersonHandler = (personData) => {
+    const addPersonHandler = (personData: { name: string; amount: number }) => {
         setExpenseAmount((prevExpenseAmount) => {
             const prevAmountFormated = prevExpenseAmount * 100;
             const newAmountFormated = personData.amount * 100;
@@ -34,7 +44,7 @@ const ExpenseCreator = (props) => {
         });
     };
 
-    const removePersonHandler = (personsDue, updatedPeopleData) => {
+    const removePersonHandler = (personsDue: number, updatedPeopleData: {}[]) => {
         setExpenseAmount((prevExpenseAmount) => {
             const prevAmountFormated = prevExpenseAmount * 100;
             const personsDueFormated = personsDue * 100;
@@ -46,7 +56,7 @@ const ExpenseCreator = (props) => {
         setPeopleData(updatedPeopleData);
     };
 
-    const isExpenseValid = (title) => {
+    const isExpenseValid = (title: string) => {
         if (title.length === 0) {
             showModal("Title can't be empty");
             return false;
@@ -61,7 +71,7 @@ const ExpenseCreator = (props) => {
     };
 
     const createExpenseHandler = () => {
-        const title = titleInput.current.value;
+        const title = titleInput.current!["value"];
         const id = `${title}${expenses.length}`;
         const amount = expenseAmount;
 
@@ -76,7 +86,7 @@ const ExpenseCreator = (props) => {
         };
 
         dispatch(expensesActions.createExpense(expense));
-        props.onCreateExpense();
+        onCreateExpense();
     };
 
     return (
@@ -93,7 +103,7 @@ const ExpenseCreator = (props) => {
                 <Input
                     ref={titleInput}
                     label={"Title"}
-                    input={{ id: "title", type: "text", maxLength: "30" }}
+                    input={{ id: "title", type: "text", maxLength: 30 }}
                 />
                 <ExpenseInfo returnAmount={expenseAmount} debtorsAmount={peopleData.length} />
                 <PeopleList
@@ -102,7 +112,7 @@ const ExpenseCreator = (props) => {
                     peopleData={peopleData}
                 />
                 <div className={classes.action}>
-                    <Button onClick={props.onCancel}>Cancel</Button>
+                    <Button onClick={onCancel}>Cancel</Button>
                     <Button onClick={createExpenseHandler}>Create Expense</Button>
                 </div>
             </div>

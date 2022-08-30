@@ -2,7 +2,14 @@ import React from "react";
 
 import classes from "./Input.module.css";
 
-const Input = React.forwardRef((props, ref) => {
+type InputProps = {
+    narrow?: boolean;
+    label: string;
+    input: { id: string; type: string; maxLength: number };
+    onChange?: () => void;
+};
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     const isNarrow = props.narrow ? true : false;
 
     return (

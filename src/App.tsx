@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "./store";
 
 type State = {
-    expenses: [];
+    expenses: {}[];
     managedExpense: null;
 };
 
