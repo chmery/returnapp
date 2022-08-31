@@ -4,8 +4,24 @@ import BrightCard from "../UI/Cards/BrightCard";
 import ManageButton from "../UI/Buttons/ManageButton";
 import RemoveButton from "../UI/Buttons/RemoveButton";
 
-const Status = (props) => {
-    const { amountReturned, amount } = props.expenseData;
+import { PersonData } from "../ExpenseCreator/ExpenseCreator";
+
+type Expense = {
+    id: string;
+    title: string;
+    amount: number;
+    amountReturned: number;
+    people: PersonData[];
+};
+
+type Props = {
+    expenseData: Expense;
+    onRemove?: (id: string) => void;
+    onManage?: (id: string) => void;
+};
+
+const Status = ({ expenseData }: Props) => {
+    const { amountReturned, amount } = expenseData;
     const isExpenseFinished = amountReturned === amount;
 
     const content = (
@@ -18,14 +34,12 @@ const Status = (props) => {
     return <div className={classes.status}>{content}</div>;
 };
 
-const ExpenseItem = (props) => {
-    const { expenseData } = props;
-
+const ExpenseItem = ({ expenseData, onRemove, onManage }: Props) => {
     const title = `${expenseData.title} `;
     const amount = `$${expenseData.amount}`;
 
-    const onRemoveHandler = () => props.onRemove(expenseData.id);
-    const onManageHandler = () => props.onManage(expenseData.id);
+    const onRemoveHandler = () => onRemove!(expenseData.id);
+    const onManageHandler = () => onManage!(expenseData.id);
 
     return (
         <BrightCard>

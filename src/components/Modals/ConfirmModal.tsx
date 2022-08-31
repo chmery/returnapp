@@ -2,15 +2,21 @@ import Modal from "../UI/Modal";
 import { TrashIcon } from "../UI/Icons";
 import classes from "./Modals.module.css";
 
-const ConfirmModal = (props) => {
+type Props = {
+    onModalClose: () => void;
+    onConfirm: () => void;
+    isModalClosing: boolean;
+};
+
+const ConfirmModal = ({ onModalClose, onConfirm, isModalClosing }: Props) => {
     const btnColor = {
         background: "var(--yellow)",
     };
 
     return (
         <Modal
-            onBackdropClick={props.onModalClose}
-            isModalClosing={props.isModalClosing}
+            onBackdropClick={onModalClose}
+            isModalClosing={isModalClosing}
             color={"var(--yellow)"}
         >
             <TrashIcon />
@@ -19,10 +25,10 @@ const ConfirmModal = (props) => {
                 <p>This expense will be pernamently deleted.</p>
             </div>
             <div className={classes.action}>
-                <button onClick={props.onConfirm} style={btnColor}>
+                <button onClick={onConfirm} style={btnColor}>
                     Okay
                 </button>
-                <button onClick={props.onModalClose} style={btnColor}>
+                <button onClick={onModalClose} style={btnColor}>
                     Cancel
                 </button>
             </div>

@@ -2,24 +2,26 @@ import Modal from "../UI/Modal";
 import { AlertIcon } from "../UI/Icons";
 import classes from "./Modals.module.css";
 
-const ErrorModal = (props) => {
+type Props = {
+    onModalClose: () => void;
+    isModalClosing: boolean;
+    message: string;
+};
+
+const ErrorModal = ({ onModalClose, isModalClosing, message }: Props) => {
     const btnColor = {
         background: "var(--red)",
     };
 
     return (
-        <Modal
-            onBackdropClick={props.onModalClose}
-            isModalClosing={props.isModalClosing}
-            color={"var(--red)"}
-        >
+        <Modal onBackdropClick={onModalClose} isModalClosing={isModalClosing} color={"var(--red)"}>
             <AlertIcon />
             <div>
                 <h3>Whoops!</h3>
-                <p>{props.message}</p>
+                <p>{message}</p>
             </div>
             <div className={classes.action}>
-                <button onClick={props.onModalClose} style={btnColor}>
+                <button onClick={onModalClose} style={btnColor}>
                     Ok
                 </button>
             </div>

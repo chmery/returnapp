@@ -6,13 +6,27 @@ import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
 import { useState } from "react";
 
+import { PersonData } from "../ExpenseCreator/ExpenseCreator";
+
+type Expense = {
+    id: string;
+    title: string;
+    amount: number;
+    amountReturned: number;
+    people: PersonData[];
+};
+
+type State = {
+    expenses: Expense[];
+};
+
 const ExpensesList = () => {
     const { showModal, closeModal, isModalShown, isClosing } = useModal();
-    const [idToRemove, setIdToRemove] = useState(null);
+    const [idToRemove, setIdToRemove] = useState<string | null>(null);
     const dispatch = useDispatch();
-    const expenses = useSelector((state) => state.expenses);
+    const expenses = useSelector((state: State) => state.expenses);
 
-    const confirmRemoveHandler = (id) => {
+    const confirmRemoveHandler = (id: string) => {
         showModal();
         setIdToRemove(id);
     };
@@ -22,7 +36,8 @@ const ExpensesList = () => {
         dispatch(expensesActions.removeExpense({ idToRemove }));
     };
 
-    const manageExpenseHandler = (id) => dispatch(expensesActions.setManagedExpense({ id }));
+    const manageExpenseHandler = (id: string) =>
+        dispatch(expensesActions.setManagedExpense({ id }));
 
     const expensesList = expenses.map((expenseData) => (
         <ExpenseItem
