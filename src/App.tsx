@@ -7,10 +7,19 @@ import ExpenseCreator from "./components/ExpenseCreator/ExpenseCreator";
 import ExpenseManager from "./components/ExpenseManager/ExpenseManager";
 import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "./store";
+import { PersonData } from "./components/ExpenseCreator/ExpenseCreator";
+
+type Expense = {
+    id: string;
+    title: string;
+    amount: number;
+    amountReturned: number;
+    people: PersonData[];
+};
 
 type State = {
-    expenses: {}[];
-    managedExpense: null;
+    expenses: Expense[];
+    managedExpense: Expense;
 };
 
 function App() {

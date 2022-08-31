@@ -1,23 +1,32 @@
 import Summary from "../UI/Summary";
 import { BarsIcon, LayersIcon } from "../UI/Icons";
+import { PersonData } from "../ExpenseCreator/ExpenseCreator";
 
-const TotalReturnInfo = (props) => {
-    const leftToReturn = `$${props.leftToReturn}`;
+type Expense = {
+    id: string;
+    title: string;
+    amount: number;
+    amountReturned: number;
+    people: PersonData[];
+};
 
+type Props = {
+    expenses: Expense[];
+};
+
+const TotalReturnInfo = ({ leftToReturn }: { leftToReturn: number }) => {
     return (
         <div style={{ flex: "1 40%" }}>
             <BarsIcon />
             <div>
                 <p>Total to return:</p>
-                <span>{leftToReturn}</span>
+                <span>{`$${leftToReturn}`}</span>
             </div>
         </div>
     );
 };
 
-const TotalExpenses = (props) => {
-    const expensesNum = props.expensesNum;
-
+const TotalExpenses = ({ expensesNum }: { expensesNum: number }) => {
     return (
         <div>
             <LayersIcon />
@@ -29,14 +38,9 @@ const TotalExpenses = (props) => {
     );
 };
 
-const ExpensesInfo = (props) => {
-    const { expenses } = props;
-
-    console.log(expenses);
-
-    const calcTotal = (value) => {
+const ExpensesInfo = ({ expenses }: Props) => {
+    const calcTotal = (value: "amount" | "amountReturned") => {
         const total = expenses.reduce((total, expense) => (total += expense[value]), 0) * 100;
-
         return total;
     };
 
