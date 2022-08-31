@@ -25,18 +25,13 @@ type State = {
 function App() {
     const dispatch = useDispatch();
     const managedExpense = useSelector((state: State) => state.managedExpense);
-    const expenses = useSelector((state: State) => state.expenses);
     const [isCreatorShown, setIsCreatorShown] = useState(false);
 
     useEffect(() => {
-        const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses") || "");
+        const expensesFromLocalStorage = JSON.parse(localStorage.getItem("expenses")!);
         if (!expensesFromLocalStorage) return;
         dispatch(expensesActions.setExpensesData(expensesFromLocalStorage));
     }, [dispatch]);
-
-    useEffect(() => {
-        localStorage.setItem("expenses", JSON.stringify(expenses));
-    }, [expenses, dispatch]);
 
     const openCreatorHandler = () => setIsCreatorShown(true);
     const closeCreatorHandler = () => setIsCreatorShown(false);

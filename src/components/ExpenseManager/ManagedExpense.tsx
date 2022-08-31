@@ -3,7 +3,7 @@ import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
 import { LayersIcon, BarsIcon } from "../UI/Icons";
 import { PersonData } from "../ExpenseCreator/ExpenseCreator";
 
-type ExpenseData = {
+type Expense = {
     id: string;
     title: string;
     amount: number;
@@ -12,7 +12,7 @@ type ExpenseData = {
 };
 
 type Props = {
-    expenseData: ExpenseData;
+    expenseData: Expense;
     onRemove: (id: string) => void;
 };
 

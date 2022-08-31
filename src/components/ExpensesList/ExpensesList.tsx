@@ -22,7 +22,7 @@ type State = {
 
 const ExpensesList = () => {
     const { showModal, closeModal, isModalShown, isClosing } = useModal();
-    const [idToRemove, setIdToRemove] = useState<string | null>(null);
+    const [idToRemove, setIdToRemove] = useState<string>(null!);
     const dispatch = useDispatch();
     const expenses = useSelector((state: State) => state.expenses);
 

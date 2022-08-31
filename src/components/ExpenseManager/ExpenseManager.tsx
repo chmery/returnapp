@@ -24,7 +24,7 @@ type State = {
 
 const ExpenseManager = () => {
     const { showModal, closeModal, isModalShown, isClosing } = useModal();
-    const [idToRemove, setIdToRemove] = useState<null | string>(null);
+    const [idToRemove, setIdToRemove] = useState<string>(null!);
     const dispatch = useDispatch();
     const managedExpense = useSelector((state: State) => state.managedExpense);
 
