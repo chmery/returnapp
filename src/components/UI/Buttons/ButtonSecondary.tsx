@@ -1,9 +1,14 @@
 import classes from "./ButtonSecondary.module.css";
 
-const ButtonSecondary = (props) => {
+type Props = {
+    onClick: () => void;
+    children: React.ReactNode;
+};
+
+const ButtonSecondary = ({ onClick, children }: Props) => {
     return (
-        <button onClick={props.onClick} className={classes.button}>
-            {props.children}
+        <button onClick={onClick} className={classes.button}>
+            {children}
         </button>
     );
 };

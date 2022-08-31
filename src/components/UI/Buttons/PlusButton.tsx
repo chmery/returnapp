@@ -1,9 +1,13 @@
 import { PlusIcon } from "../Icons";
 import classes from "./PlusButton.module.css";
 
-const PlusButton = (props) => {
+type Props = {
+    onClick: () => void;
+};
+
+const PlusButton = ({ onClick }: Props) => {
     return (
-        <button onClick={props.onClick} className={classes.button}>
+        <button onClick={onClick} className={classes.button}>
             <PlusIcon />
         </button>
     );

@@ -1,9 +1,14 @@
 import classes from "./DarkCard.module.css";
 
-const DarkCard = (props) => {
+type Props = {
+    children: React.ReactNode;
+    style?: React.CSSProperties;
+};
+
+const DarkCard = ({ children, style }: Props) => {
     return (
-        <div style={props.style} className={classes["dark-card"]}>
-            {props.children}
+        <div style={style} className={classes["dark-card"]}>
+            {children}
         </div>
     );
 };

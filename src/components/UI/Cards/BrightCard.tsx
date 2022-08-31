@@ -1,7 +1,11 @@
 import classes from "./BrightCard.module.css";
 
-const BrightCard = (props) => {
-    return <div className={classes["bright-card"]}>{props.children}</div>;
+type Props = {
+    children: React.ReactNode;
+};
+
+const BrightCard = ({ children }: Props) => {
+    return <div className={classes["bright-card"]}>{children}</div>;
 };
 
 export default BrightCard;

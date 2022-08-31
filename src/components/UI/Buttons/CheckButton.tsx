@@ -1,13 +1,16 @@
 import styles from "./IconButton.module.css";
 import { CheckIcon } from "../Icons";
 
-const CheckButton = (props) => {
-    const { isAmountReturned } = props;
+type Props = {
+    onClick: () => void;
+    isAmountReturned: boolean;
+};
 
+const CheckButton = ({ onClick, isAmountReturned }: Props) => {
     const classes = `${styles.button} ${!isAmountReturned ? styles.unchecked : ""}`;
 
     return (
-        <button onClick={props.onClick} className={classes}>
+        <button onClick={onClick} className={classes}>
             <CheckIcon />
         </button>
     );
