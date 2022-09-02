@@ -3,7 +3,7 @@ import { LeftIcon } from "../UI/Icons";
 import classes from "./ExpenseManager.module.css";
 import ManagedExpense from "./ManagedExpense";
 import PeopleList from "./PeopleList";
-import { expensesActions } from "../../store";
+import { expensesActions } from "../../store/expensesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
@@ -35,7 +35,7 @@ const ExpenseManager = () => {
 
     const removeManagedExpenseHandler = () => {
         closeModal();
-        dispatch(expensesActions.removeExpense({ idToRemove }));
+        dispatch(expensesActions.removeExpense(idToRemove));
     };
 
     const checkPersonHandler = (id: string, returnAmount: number) => {

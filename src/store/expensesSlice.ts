@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PersonData } from "../components/ExpenseCreator/ExpenseCreator";
 
 type Expense = {
@@ -23,35 +23,32 @@ const expensesSlice = createSlice({
     name: "expenses",
     initialState,
     reducers: {
-        setExpensesData(state, { payload }: { payload: Expense[] }) {
-            state.expenses = payload;
+        setExpensesData(state, action: PayloadAction<Expense[]>) {
+            state.expenses = action.payload;
         },
-        createExpense(state, { payload }: { payload: Expense }) {
-            state.expenses.push(payload);
+        createExpense(state, action: PayloadAction<Expense>) {
+            state.expenses.push(action.payload);
             setLocalStorageData(state.expenses);
         },
-        removeExpense(state, { payload }: { payload: { idToRemove: string } }) {
-            state.expenses = state.expenses.filter((expense) => expense.id !== payload.idToRemove);
+        removeExpense(state, action: PayloadAction<string>) {
+            state.expenses = state.expenses.filter((expense) => expense.id !== action.payload);
             state.managedExpense = null;
             setLocalStorageData(state.expenses);
         },
-        setManagedExpense(state, { payload }: { payload: { id: string } }) {
+        setManagedExpense(state, action: PayloadAction<string>) {
             const managedExpenseIndex = state.expenses.findIndex(
-                (expense) => expense.id === payload.id
+                (expense) => expense.id === action.payload
             );
             state.managedExpense = state.expenses[managedExpenseIndex];
         },
-        updateManagedExpense(
-            state,
-            { payload }: { payload: { id: string; returnAmount: number } }
-        ) {
+        updateManagedExpense(state, action: PayloadAction<{ id: string; returnAmount: number }>) {
             state.managedExpense!.people.forEach((person) => {
-                if (person.id === payload.id) {
+                if (person.id === action.payload.id) {
                     person.hasReturned = !person.hasReturned;
 
                     person.hasReturned
-                        ? (state.managedExpense!.amountReturned += payload.returnAmount)
-                        : (state.managedExpense!.amountReturned -= payload.returnAmount);
+                        ? (state.managedExpense!.amountReturned += action.payload.returnAmount)
+                        : (state.managedExpense!.amountReturned -= action.payload.returnAmount);
                 }
             });
         },
@@ -60,17 +57,13 @@ const expensesSlice = createSlice({
                 (expense) => expense.id === state.managedExpense!.id
             );
 
-            state.expenses![managedExpenseIndex] = state.managedExpense!;
+            state.expenses[managedExpenseIndex] = state.managedExpense!;
             state.managedExpense = null;
             setLocalStorageData(state.expenses);
         },
     },
 });
 
-const store = configureStore({
-    reducer: expensesSlice.reducer,
-});
-
 export const expensesActions = expensesSlice.actions;
-
-export default store;
+const ExpensesReducer = expensesSlice.reducer;
+export default ExpensesReducer;

@@ -8,7 +8,7 @@ import ExpenseInfo from "./ExpenseInfo";
 import ErrorModal from "../Modals/ErrorModal";
 import useModal from "../../hooks/use-modal";
 import { useSelector, useDispatch } from "react-redux";
-import { expensesActions } from "../../store";
+import { expensesActions } from "../../store/expensesSlice";
 
 type CreatorProps = {
     onCreateExpense: () => void;

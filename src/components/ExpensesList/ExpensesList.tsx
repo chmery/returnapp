@@ -1,7 +1,7 @@
 import DarkCard from "../UI/Cards/DarkCard";
 import ExpenseItem from "./ExpenseItem";
 import { useSelector, useDispatch } from "react-redux";
-import { expensesActions } from "../../store";
+import { expensesActions } from "../../store/expensesSlice";
 import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
 import { useState } from "react";
@@ -33,11 +33,10 @@ const ExpensesList = () => {
 
     const removeExpenseHandler = () => {
         closeModal();
-        dispatch(expensesActions.removeExpense({ idToRemove }));
+        dispatch(expensesActions.removeExpense(idToRemove));
     };
 
-    const manageExpenseHandler = (id: string) =>
-        dispatch(expensesActions.setManagedExpense({ id }));
+    const manageExpenseHandler = (id: string) => dispatch(expensesActions.setManagedExpense(id));
 
     const expensesList = expenses.map((expenseData) => (
         <ExpenseItem

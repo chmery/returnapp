@@ -7,9 +7,9 @@ export const BarsIcon = ({ color }: { color?: string }) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke={color ? color : "#00ff94"}
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-bar-chart-2"
         >
             <line x1="18" y1="20" x2="18" y2="10"></line>
@@ -28,9 +28,9 @@ export const PersonIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="#7479FF"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-user"
         >
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -48,9 +48,9 @@ export const RemoveIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-x"
         >
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -68,9 +68,9 @@ export const PlusIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-plus"
         >
             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -88,9 +88,9 @@ export const ManageIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-more-horizontal"
         >
             <circle cx="12" cy="12" r="1"></circle>
@@ -109,9 +109,9 @@ export const LeftIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-chevron-left"
         >
             <polyline points="15 18 9 12 15 6"></polyline>
@@ -128,9 +128,9 @@ export const CheckIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-check"
         >
             <polyline points="20 6 9 17 4 12"></polyline>
@@ -147,9 +147,9 @@ export const AlertIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="#FF5555"
-            stroke-width="1"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-alert-triangle"
         >
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -168,9 +168,9 @@ export const LayersIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="#7479FF"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-layers"
         >
             <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -189,9 +189,9 @@ export const TrashIcon = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="#FFC46C"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="feather feather-trash"
         >
             <polyline points="3 6 5 6 21 6"></polyline>
