@@ -9,6 +9,7 @@ import ErrorModal from "../Modals/ErrorModal";
 import useModal from "../../hooks/use-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "../../store/expensesSlice";
+import { PersonData, ExpenseData } from "../../types/types";
 
 type CreatorProps = {
     onCreateExpense: () => void;
@@ -16,15 +17,8 @@ type CreatorProps = {
 };
 
 type State = {
-    expenses: {}[];
+    expenses: ExpenseData[];
     managedExpense: null;
-};
-
-export type PersonData = {
-    id: string;
-    name: string;
-    amount: number;
-    hasReturned: boolean;
 };
 
 const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {

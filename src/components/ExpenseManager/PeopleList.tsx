@@ -1,14 +1,6 @@
 import PeopleItem from "./PeopleItem";
 import DarkCard from "../UI/Cards/DarkCard";
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
-
-type ExpenseData = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData } from "../../types/types";
 
 type Props = {
     managedExpense: ExpenseData;

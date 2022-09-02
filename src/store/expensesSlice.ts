@@ -1,13 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PersonData } from "../components/ExpenseCreator/ExpenseCreator";
-
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData as Expense } from "../types/types";
 
 type SliceState = {
     expenses: Expense[];

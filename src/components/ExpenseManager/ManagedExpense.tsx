@@ -1,15 +1,7 @@
 import Summary from "../UI/Summary";
 import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
 import { LayersIcon, BarsIcon } from "../UI/Icons";
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
-
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData as Expense } from "../../types/types";
 
 type Props = {
     expenseData: Expense;

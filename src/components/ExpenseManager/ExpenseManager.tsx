@@ -8,18 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
 import { useState } from "react";
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
-
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData } from "../../types/types";
 
 type State = {
-    managedExpense: Expense;
+    managedExpense: ExpenseData;
 };
 
 const ExpenseManager = () => {

@@ -2,7 +2,7 @@ import classes from "./PeopleItem.module.css";
 
 import BrightCard from "../../UI/Cards/BrightCard";
 import RemoveButton from "../../UI/Buttons/RemoveButton";
-import { PersonData } from "../ExpenseCreator";
+import { PersonData } from "../../../types/types";
 
 type PeopleItemProps = {
     personData: PersonData;

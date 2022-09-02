@@ -1,17 +1,9 @@
 import Summary from "../UI/Summary";
 import { BarsIcon, LayersIcon } from "../UI/Icons";
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
-
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData } from "../../types/types";
 
 type Props = {
-    expenses: Expense[];
+    expenses: ExpenseData[];
 };
 
 const TotalReturnInfo = ({ leftToReturn }: { leftToReturn: number }) => {

@@ -6,18 +6,10 @@ import ConfirmModal from "../Modals/ConfirmModal";
 import useModal from "../../hooks/use-modal";
 import { useState } from "react";
 
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
-
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData } from "../../types/types";
 
 type State = {
-    expenses: Expense[];
+    expenses: ExpenseData[];
 };
 
 const ExpensesList = () => {

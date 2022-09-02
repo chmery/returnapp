@@ -4,23 +4,15 @@ import ExpensesList from "../ExpensesList/ExpensesList";
 import { PlusIcon } from "../UI/Icons";
 import ExpensesInfo from "./ExpensesInfo";
 import { useSelector } from "react-redux";
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
+import { ExpenseData } from "../../types/types";
 
 type Props = {
     onOpenCreator: () => void;
 };
 
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
-
 type State = {
-    expenses: Expense[];
-    managedExpense: Expense;
+    expenses: ExpenseData[];
+    managedExpense: ExpenseData;
 };
 
 const StarterMessage = () => (

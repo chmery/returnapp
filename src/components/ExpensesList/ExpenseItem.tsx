@@ -3,19 +3,10 @@ import classes from "./ExpenseItem.module.css";
 import BrightCard from "../UI/Cards/BrightCard";
 import ManageButton from "../UI/Buttons/ManageButton";
 import RemoveButton from "../UI/Buttons/RemoveButton";
-
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
-
-type Expense = {
-    id: string;
-    title: string;
-    amount: number;
-    amountReturned: number;
-    people: PersonData[];
-};
+import { ExpenseData } from "../../types/types";
 
 type Props = {
-    expenseData: Expense;
+    expenseData: ExpenseData;
     onRemove?: (id: string) => void;
     onManage?: (id: string) => void;
 };

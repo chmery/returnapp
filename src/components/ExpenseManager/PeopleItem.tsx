@@ -2,7 +2,7 @@ import BrightCard from "../UI/Cards/BrightCard";
 import CheckButton from "../UI/Buttons/CheckButton";
 
 import classes from "./PeopleItem.module.css";
-import { PersonData } from "../ExpenseCreator/ExpenseCreator";
+import { PersonData } from "../../types/types";
 
 type Props = {
     personData: PersonData;

@@ -4,7 +4,7 @@ import PeopleItem from "./PeopleItem";
 import DarkCard from "../../UI/Cards/DarkCard";
 import PlusButton from "../../UI/Buttons/PlusButton";
 import { useState } from "react";
-import { PersonData } from "../ExpenseCreator";
+import { PersonData } from "../../../types/types";
 
 type PeopleListProps = {
     peopleData: PersonData[];
