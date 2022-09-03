@@ -3,7 +3,7 @@ import ButtonSecondary from "../../UI/Buttons/ButtonSecondary";
 import { useRef, useState } from "react";
 import AddPeopleInputs from "./AddPeopleInputs";
 import ErrorModal from "../../Modals/ErrorModal";
-import useModal from "../../../hooks/use-modal";
+import useModal from "../../UI/Modal/use-modal";
 
 type AddPeopleProps = {
     peopleAmount: number;

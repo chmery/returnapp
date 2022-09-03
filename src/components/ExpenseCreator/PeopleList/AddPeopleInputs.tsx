@@ -1,6 +1,6 @@
 import CurrencyInput from "react-currency-input-field";
 
-import Input from "../../UI/Input";
+import Input from "../../UI/Input/Input";
 import classes from "./AddPeopleInputs.module.css";
 
 type AddPeopleInputsProps = {

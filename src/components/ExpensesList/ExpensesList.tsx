@@ -3,7 +3,7 @@ import ExpenseItem from "./ExpenseItem";
 import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "../../store/expensesSlice";
 import ConfirmModal from "../Modals/ConfirmModal";
-import useModal from "../../hooks/use-modal";
+import useModal from "../UI/Modal/use-modal";
 import { useState } from "react";
 
 import { ExpenseData } from "../../types/types";

@@ -1,4 +1,4 @@
-import Summary from "../UI/Summary";
+import Summary from "../UI/Summary/Summary";
 import { PersonIcon, BarsIcon } from "../UI/Icons";
 
 type Props = {

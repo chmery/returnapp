@@ -1,4 +1,4 @@
-import Summary from "../UI/Summary";
+import Summary from "../UI/Summary/Summary";
 import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
 import { LayersIcon, BarsIcon } from "../UI/Icons";
 import { ExpenseData as Expense } from "../../types/types";

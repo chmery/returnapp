@@ -1,15 +1,19 @@
 import classes from "./ExpenseCreator.module.css";
-
 import Button from "../UI/Buttons/Button";
-import Input from "../UI/Input";
+import Input from "../UI/Input/Input";
 import PeopleList from "./PeopleList/PeopleList";
 import { useRef, useState } from "react";
 import ExpenseInfo from "./ExpenseInfo";
 import ErrorModal from "../Modals/ErrorModal";
-import useModal from "../../hooks/use-modal";
+import useModal from "../UI/Modal/use-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { expensesActions } from "../../store/expensesSlice";
 import { PersonData, ExpenseData } from "../../types/types";
+import {
+    isExpenseValid,
+    formatSummedAmount,
+    formatSubstractedAmount,
+} from "./expenseCreatorHelpers";
 
 type CreatorProps = {
     onCreateExpense: () => void;
@@ -33,10 +37,7 @@ const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {
 
     const addPersonHandler = (personData: PersonData) => {
         setExpenseAmount((prevExpenseAmount) => {
-            const prevAmountFormated = prevExpenseAmount * 100;
-            const newAmountFormated = personData.amount * 100;
-
-            const updatedExpenseAmount = (prevAmountFormated + newAmountFormated) / 100;
+            const updatedExpenseAmount = formatSummedAmount(personData, prevExpenseAmount);
             return updatedExpenseAmount;
         });
 
@@ -47,28 +48,11 @@ const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {
 
     const removePersonHandler = (personsDue: number, updatedPeopleData: PersonData[]) => {
         setExpenseAmount((prevExpenseAmount) => {
-            const prevAmountFormated = prevExpenseAmount * 100;
-            const personsDueFormated = personsDue * 100;
-
-            const updatedExpenseAmount = (prevAmountFormated - personsDueFormated) / 100;
+            const updatedExpenseAmount = formatSubstractedAmount(personsDue, prevExpenseAmount);
             return updatedExpenseAmount;
         });
 
         setPeopleData(updatedPeopleData);
-    };
-
-    const isExpenseValid = (title: string) => {
-        if (title.length === 0) {
-            showModal("Title can't be empty");
-            return false;
-        }
-
-        if (peopleData.length === 0) {
-            showModal("You need to add one person at least.");
-            return false;
-        }
-
-        return true;
     };
 
     const createExpenseHandler = () => {
@@ -76,7 +60,11 @@ const ExpenseCreator = ({ onCreateExpense, onCancel }: CreatorProps) => {
         const id = `${title}${expenses.length}`;
         const amount = expenseAmount;
 
-        if (!isExpenseValid(title)) return;
+        if (isExpenseValid(title, peopleData) !== true) {
+            const errorMessage = isExpenseValid(title, peopleData);
+            showModal(`${errorMessage}`);
+            return;
+        }
 
         const expense = {
             id: id,

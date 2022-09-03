@@ -1,4 +1,4 @@
-import Modal from "../UI/Modal";
+import Modal from "../UI/Modal/Modal";
 import { AlertIcon } from "../UI/Icons";
 import classes from "./Modals.module.css";
 

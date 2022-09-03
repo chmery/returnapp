@@ -6,7 +6,7 @@ import PeopleList from "./PeopleList";
 import { expensesActions } from "../../store/expensesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ConfirmModal from "../Modals/ConfirmModal";
-import useModal from "../../hooks/use-modal";
+import useModal from "../UI/Modal/use-modal";
 import { useState } from "react";
 import { ExpenseData } from "../../types/types";
 
