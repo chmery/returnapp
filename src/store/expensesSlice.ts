@@ -38,9 +38,18 @@ const expensesSlice = createSlice({
                 if (person.id === action.payload.id) {
                     person.hasReturned = !person.hasReturned;
 
+                    const amountReturnedFormated = state.managedExpense!.amountReturned * 100;
+                    const returnAmountFormated = action.payload.returnAmount * 100;
+
+                    const amountAfterSubstraction =
+                        (amountReturnedFormated - returnAmountFormated) / 100;
+
+                    const amountAfterSumming =
+                        (amountReturnedFormated + returnAmountFormated) / 100;
+
                     person.hasReturned
-                        ? (state.managedExpense!.amountReturned += action.payload.returnAmount)
-                        : (state.managedExpense!.amountReturned -= action.payload.returnAmount);
+                        ? (state.managedExpense!.amountReturned = amountAfterSumming)
+                        : (state.managedExpense!.amountReturned = amountAfterSubstraction);
                 }
             });
         },
